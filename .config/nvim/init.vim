@@ -14,7 +14,7 @@ Plug 'jalvesaq/vimcmdline'
 Plug 'roxma/nvim-yarp'
 Plug 'jalvesaq/Nvim-R'
 Plug 'gaalcaras/ncm-R'
-Plug 'sirver/UltiSnips'
+"Plug 'sirver/UltiSnips'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'lervag/vimtex'
 
