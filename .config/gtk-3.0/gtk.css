@@ -1,6 +1,3 @@
-/* UNITE windowDecorations */
-@import url('/home/rman/.local/share/gnome-shell/extensions/unite@hardpixel.eu/styles/buttons-right/always.css');
-/* windowDecorations UNITE */
 /* shrink headerbars (don't forget semicolons after each property) */
 headerbar {
     min-height: 1px;
