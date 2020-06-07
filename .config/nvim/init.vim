@@ -13,7 +13,7 @@ Plug 'ncm2/ncm2-ultisnips'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'  " file list
 Plug 'majutsushi/tagbar'  " show tags in a bar (functions etc) for easy browsing
-"Plug 'vim-airline/vim-airline'  " make statusline awesome
+Plug 'vim-airline/vim-airline'  " make statusline awesome
 "Plug 'vim-airline/vim-airline-themes'  " themes for statusline 
 Plug 'davidhalter/jedi-vim'   " jedi for python
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
@@ -29,8 +29,16 @@ Plug 'ncm2/ncm2'  " awesome autocomplete plugin
 Plug 'HansPinckaers/ncm2-jedi'  " fast python completion (use ncm2 if you want type info or snippet support)
 Plug 'ncm2/ncm2-bufword'  " buffer keyword completion
 Plug 'ncm2/ncm2-path'  " filepath completion
-
 call plug#end()       
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Remember my place 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" 
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => split navigation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
