@@ -10,7 +10,7 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'gaalcaras/ncm-R'
 "Plug 'sirver/UltiSnips'
 Plug 'ncm2/ncm2-ultisnips'
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'  " file list
 Plug 'majutsushi/tagbar'  " show tags in a bar (functions etc) for easy browsing
 Plug 'vim-airline/vim-airline'  " make statusline awesome
@@ -21,7 +21,8 @@ Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
 Plug 'kien/ctrlp.vim'  " fuzzy search files
 Plug 'tweekmonster/impsort.vim'  " color and sort imports
 "Plug 'wsdjeg/FlyGrep.vim'  " awesome grep on the fly
-Plug 'w0rp/ale'  " python linters
+"Plug 'w0rp/ale'  " python linters
+"Plug 'dense-analysis/ale'
 "Plug 'airblade/vim-gitgutter'  " show git changes to files in gutter
 Plug 'tpope/vim-commentary'  "comment-out by gc
 Plug 'roxma/nvim-yarp'  " dependency of ncm2
@@ -30,6 +31,19 @@ Plug 'HansPinckaers/ncm2-jedi'  " fast python completion (use ncm2 if you want t
 Plug 'ncm2/ncm2-bufword'  " buffer keyword completion
 Plug 'ncm2/ncm2-path'  " filepath completion
 call plug#end()       
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => leader
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python_host_prog  = '/home/flynnro/.flynnpy4/bin/python'
+let g:python3_host_prog = '/home/flynnro/.flynnpy4/bin/python'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => leader
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ";"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Remember my place 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>o :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Remember my place 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,18 +61,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Julia
+" => linter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:default_julia_version = '1.0'
-" let g:LanguageClient_serverCommands = {
-"         \ 'julia': ['/u', '--startup-file=no', '--history-file=no', '-e', '
-"         \       import LanguageServer;
-"         \       server = LanguageServer.LanguageServerInstance(stdin, stdout, false);
-"         \       server.runlinter = true;
-"         \       run(server);
-"         \   ']
-"         \}
-" 
+"let g:ale_linters = {
+"      \   'python': ['flake8', 'pylint'],
+"      \}
+"let g:ale_fixers = {
+"      \    'python': ['yapf'],
+"      \}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ncm2 settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -67,13 +77,29 @@ set completeopt=menuone,noselect,noinsert
 set shortmess+=c
 inoremap <c-c> <ESC>
 " make it fast
-let ncm2#popup_delay = 5
+let ncm2#popup_delay = 1
 let ncm2#complete_length = [[1, 1]]
 " Use new fuzzy based matches
 let g:ncm2#matcher = 'substrfuzzy'
-  " Use <TAB> to select the popup menu:
+" Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you don't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni','csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name' : 'css',
+        \ 'priority': 9,
+        \'subscope_enable': 1,
+        \'scope': ['css','scss'],
+        \'mark':'css',
+        \'word_pattern':'[\w\-]+',
+        \'complete_pattern': ':\s*',
+        \'on_complete':['ncm2#on_complete#omni','csscomplete#CompleteCSS'],
+        \})
 
 " Disable Jedi-vim autocompletion and enable call-signatures options
 let g:jedi#auto_initialization = 1
@@ -114,7 +140,7 @@ map <Esc><Esc> :w<CR>
 " => Auto complete the file
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leade r>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Line execution with inline terminal.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
