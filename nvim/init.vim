@@ -2,27 +2,45 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'jalvesaq/vimcmdline'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jalvesaq/vimcmdline'
+"Plug 'dense-analysis/ale'
+" Plug 'nvie/vim-flake8'
 Plug 'vim-airline/vim-airline'  " make statusline awesome
 Plug 'scrooloose/nerdtree'  " file list
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
 Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
-Plug 'kien/ctrlp.vim'  " fuzzy search files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pixelneo/vim-python-docstring'
+"Plug 'puremourning/vimspector'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_host_prog  = '/home/rman/.config/nvim/nvim/bin/python'
-let g:python3_host_prog = '/home/rman/.config/nvim/nvim/bin/python3'
-let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
+let g:python_host_prog  = '/Users/roryflynn/.config/nvim/nvim/bin/python'
+let g:python3_host_prog = '/Users/roryflynn/.config/nvim/nvim/bin/python3'
+let g:ncm2_jedi#environment = '/Users/roryflynn/.config/nvim/nvim/bin/python3'
+
+" let g:ale_linters = {
+"       \   'python': ['flake8', 'pylint'],
+"       \   'ruby': ['standardrb', 'rubocop'],
+"       \   'javascript': ['eslint'],
+"       \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => leader
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e
 let mapleader = ";"
+nnoremap q <c-v>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
+let g:vimspector_enable_mappings = 'HUMAN'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => docstring
@@ -211,6 +229,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+autocmd BufNew,BufEnter *.json,*.md execute "silent! CocDisable"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
