@@ -3,44 +3,35 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'chrisbra/csv.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jalvesaq/vimcmdline'
-"Plug 'dense-analysis/ale'
-" Plug 'nvie/vim-flake8'
 Plug 'vim-airline/vim-airline'  " make statusline awesome
 Plug 'scrooloose/nerdtree'  " file list
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
 Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
+Plug 'kien/ctrlp.vim'  " fuzzy search files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pixelneo/vim-python-docstring'
-"Plug 'puremourning/vimspector'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_host_prog  = '/Users/roryflynn/.config/nvim/nvim/bin/python'
-let g:python3_host_prog = '/Users/roryflynn/.config/nvim/nvim/bin/python3'
-let g:ncm2_jedi#environment = '/Users/roryflynn/.config/nvim/nvim/bin/python3'
-
-" let g:ale_linters = {
-"       \   'python': ['flake8', 'pylint'],
-"       \   'ruby': ['standardrb', 'rubocop'],
-"       \   'javascript': ['eslint'],
-"       \}
+let g:python_host_prog  = '/home/rman/.config/nvim/nvim/bin/python'
+let g:python3_host_prog = '/home/rman/.config/nvim/nvim/bin/python3'
+let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => leader
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e
 let mapleader = ";"
-nnoremap q <c-v>
+nnoremap vv <c-v>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" =>
+" => should help with linting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
 let g:vimspector_enable_mappings = 'HUMAN'
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => docstring
@@ -51,6 +42,7 @@ let g:python_style = 'rest'
 " => nerd tree toggal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>o :NERDTreeToggle<CR>
+nnoremap <leader>v <c-v>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Remember my place
@@ -231,7 +223,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 autocmd BufNew,BufEnter *.json,*.md execute "silent! CocDisable"
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -274,12 +265,12 @@ let cmdline_map_quit           = '<LocalLeader>q'
 let cmdline_vsplit      = 1      " Split the window vertically
 let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
 let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
-let cmdline_term_height = 80     " Initial height of interpreter window or pane
+let cmdline_term_height = 15     " Initial height of interpreter window or pane
 let cmdline_term_width  = 80     " Initial width of interpreter window or pane
 let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
-let cmdline_outhl       = 0      " Syntax highlight the output
+let cmdline_outhl       = 1      " Syntax highlight the output
 let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
-"let g:remoteSession = ($STY == "")
+let g:remoteSession = ($STY == "")
 
 "let cmdline_external_term_cmd = 'kitty %s &'
 "let cmdline_external_term_cmd = "gnome-terminal -e '%s' &&  sleep 1 & bspc node -f prev.local.!above"
