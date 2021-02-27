@@ -274,12 +274,12 @@ let cmdline_map_quit           = '<LocalLeader>q'
 let cmdline_vsplit      = 1      " Split the window vertically
 let cmdline_esc_term    = 1      " Remap <Esc> to :stopinsert in Neovim's terminal
 let cmdline_in_buffer   = 1      " Start the interpreter in a Neovim's terminal
-let cmdline_term_height = 15     " Initial height of interpreter window or pane
+let cmdline_term_height = 80     " Initial height of interpreter window or pane
 let cmdline_term_width  = 80     " Initial width of interpreter window or pane
 let cmdline_tmp_dir     = '/tmp' " Temporary directory to save files
-let cmdline_outhl       = 1      " Syntax highlight the output
+let cmdline_outhl       = 0      " Syntax highlight the output
 let cmdline_auto_scroll = 1      " Keep the cursor at the end of terminal (nvim)
-let g:remoteSession = ($STY == "")
+"let g:remoteSession = ($STY == "")
 
 "let cmdline_external_term_cmd = 'kitty %s &'
 "let cmdline_external_term_cmd = "gnome-terminal -e '%s' &&  sleep 1 & bspc node -f prev.local.!above"
