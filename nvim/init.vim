@@ -10,6 +10,8 @@ Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
 Plug 'kien/ctrlp.vim'  " fuzzy search files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pixelneo/vim-python-docstring'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 Plug 'chrisbra/Colorizer'
 call plug#end()
 
@@ -38,6 +40,10 @@ let g:vimspector_enable_mappings = 'HUMAN'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:python_style = 'rest'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => xolox vim-notes settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:notes_tab_indents = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerd tree toggal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
