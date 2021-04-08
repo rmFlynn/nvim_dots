@@ -1,5 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'morhetz/gruvbox'
 Plug 'chrisbra/csv.vim'
 Plug 'jalvesaq/vimcmdline'
 Plug 'jiangmiao/auto-pairs'
@@ -18,6 +20,11 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gruvbox_italic=1
+colorscheme gruvbox
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:python_host_prog  = '/home/rman/.config/nvim/nvim/bin/python'
 let g:python3_host_prog = '/home/rman/.config/nvim/nvim/bin/python3'
 let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
@@ -27,7 +34,6 @@ let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e
 let mapleader = ";"
-nnoremap vv <c-v>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => should help with linting
