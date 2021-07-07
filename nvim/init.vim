@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'morhetz/gruvbox'
 Plug 'chrisbra/csv.vim'
 Plug 'jalvesaq/vimcmdline'
@@ -15,26 +15,33 @@ Plug 'pixelneo/vim-python-docstring'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'chrisbra/Colorizer'
+Plug 'szymonmaszke/vimpyter' "vim-plug
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => python
+" => theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gruvbox_italic=1
 colorscheme gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_host_prog  = '/home/rman/.config/nvim/nvim/bin/python'
-let g:python3_host_prog = '/home/rman/.config/nvim/nvim/bin/python3'
-let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
+let g:python_host_prog  = '~/.config/nvim/nvim/bin/python'
+let g:python3_host_prog = '~/miniconda3/envs/pynvim/bin/python'
+let g:coc_node_path = "~/miniconda3/bin/node"
+"let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => jupyter / vimpyter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => leader
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre * %s/\s\+$//e
 let mapleader = ";"
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => should help with linting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
