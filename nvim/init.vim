@@ -10,6 +10,7 @@ Plug 'scrooloose/nerdtree'  " file list
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
 Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
 Plug 'kien/ctrlp.vim'  " fuzzy search files
+Plug 'numirias/semshi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pixelneo/vim-python-docstring'
 Plug 'xolox/vim-notes'
@@ -30,9 +31,9 @@ colorscheme gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_host_prog  = '~/.config/nvim/nvim/bin/python'
-let g:python3_host_prog = '~/miniconda3/envs/pynvim/bin/python'
-let g:coc_node_path = "~/miniconda3/bin/node"
+let g:python_host_prog  = '~/miniconda3/bin/python'
+let g:python3_host_prog = '~/miniconda3/bin/python'
+let g:coc_node_path = "~/miniconda3/envs/nvim/bin/node"
 "let g:ncm2_jedi#environment = '/home/rman/.config/nvim/nvim/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
