@@ -19,16 +19,21 @@ Plug 'chrisbra/Colorizer'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 Plug 'snakemake/snakefmt'
 Plug '907th/vim-auto-save'
+"Plug 'thepogsupreme/mountain'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:coc_global_extensions = ['coc-diagnostic', 'coc-jedi', 'coc-sh', 'coc-snippets']
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gruvbox_italic=1
-colorscheme gruvbox
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:gruvbox_italic=1
+"colorscheme mountain
+" let g:enable_mountain_statusline = 1
+let g:airline_theme = 'gruvbox_material'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:python_host_prog  = '~/miniconda3/bin/python'
@@ -62,6 +67,7 @@ au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => xolox vim-notes settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:notes_directories = ['~/notes']
 let g:notes_tab_indents = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => nerd tree toggal
