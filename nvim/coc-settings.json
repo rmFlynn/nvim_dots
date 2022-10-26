@@ -1,6 +1,9 @@
 {
-  "python.pythonPath": "~/.config/nvim/nvim/bin/python",
+  "python.pythonPath": "~/miniconda3/bin/python",
   "python.globalModuleInstallation": true,
+  "suggest.echodocSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "typescript.tsx"],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "jedi.enable": true,
   "jedi.startupMessage": false,
   "jedi.markupKindPreferred": "plaintext",
@@ -81,5 +84,11 @@
         "command": "docformatter",
         "args": ["-"]
       }
-    }
+    },
+   "languageserver": {
+     "nim": {
+       "command": "nimlsp",
+       "filetypes": ["nim"]
+     }
+   }
 }
