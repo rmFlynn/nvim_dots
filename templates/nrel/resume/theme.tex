@@ -1,0 +1,92 @@
+% modern themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{HTML}{458588}% green
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+%\moderncvcolor{black}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\tgadventor}{qag}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+% \usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+\usepackage{tgadventor}
+
+
+% adjust the page margins
+\usepackage[scale=0.7]{geometry}
+\geometry{top=1.2cm, bottom=1.3cm, left=1.2cm, right=1.2cm}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+% \setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\usepackage{import}
+
+%------------------------------------------------------------------------------
+% Stolen header code
+%------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand*{\namefont}{\fontsize{30}{30}\mdseries\upshape}
+\renewcommand*{\titlefont}{\LARGE\mdseries\slshape}
+\renewcommand*{\addressfont}{\small\mdseries\slshape}
+\renewcommand*{\quotefont}{\large\slshape}
+\renewcommand*{\sectionfont}{\Large\mdseries\upshape}
+\renewcommand*{\subsectionfont}{\large\mdseries\upshape}
+\renewcommand*{\hintfont}{}
+
+% styles
+\renewcommand*{\namestyle}[1]{{\namefont\textcolor{color1}{#1}}}
+\renewcommand*{\titlestyle}[1]{{\titlefont\textcolor{color1}{#1}}}
+\renewcommand*{\addressstyle}[1]{{\addressfont\textcolor{color1}{#1}}}
+\renewcommand*{\quotestyle}[1]{{\quotefont\textcolor{color1}{#1}}}
+\renewcommand*{\sectionstyle}[1]{{\sectionfont\textcolor{color1}{#1}}}
+\renewcommand*{\subsectionstyle}[1]{{\subsectionfont\textcolor{color1}{#1}}}
+\renewcommand*{\hintstyle}[1]{{\hintfont\textcolor{color1}{#1}}}
+%dd\newcommand*{\bdot}{\raisebox{.2ex}{\small{\textcolor{color1} $\bullet$}}}
+%
+\newcommand*{\house}[2]{{\fontspec{#1}\symbol{"#2}}}
+\renewcommand*{\makecvtitle}{%
+  % recompute lengths (in case we are switching from letter to resume, or vice versa)
+  \recomputecvlengths%
+  % optional detailed information box
+  \newbox{\makecvtitledetailsbox}%
+  \savebox{\makecvtitledetailsbox}{%
+    \addressfont\color{color0}%
+    \begin{tabular}[b]{@{}l@{}}%
+      \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}%
+    \end{tabular}
+  }%
+  \newbox{\makecvtitlepicturebox}%
+  \savebox{\makecvtitlepicturebox}{%
+    \ifthenelse{\isundefined{\@photo}}%
+    {}%
+    {%%\
+      \hspace*{\separatorcolumnwidth}%
+      \color{color1}%
+      \setlength{\fboxrule}{\@photoframewidth}%
+      \ifdim\@photoframewidth=0pt%
+        \setlength{\fboxsep}{0pt}\fi%
+      \framebox{\includegraphics[width=\@photowidth]{\@photo}}}}%
+  % name and title
+  \newlength{\makecvtitledetailswidth}\settowidth{\makecvtitledetailswidth}{\usebox{\makecvtitledetailsbox}}%
+  \newlength{\makecvtitlepicturewidth}\settowidth{\makecvtitlepicturewidth}{\usebox{\makecvtitlepicturebox}}%
+  \begin{minipage}[b]{10cm}%
+    \namestyle{\@firstname\ \@familyname}%
+    \ifthenelse{\equal{\@title}{}}{}{\\[0.20em]\titlestyle{\@title}}%
+  \end{minipage}%
+  \hfill%
+  % detailed information
+  \llap{\usebox{\makecvtitledetailsbox}}% \llap is used to suppress the width of the box, allowing overlap if the value of makecvtitlenamewidth is forced
+  % optional photo (rendering)
+  \usebox{\makecvtitlepicturebox}\\[2.em]%
+  % optional quote
+  \ifthenelse{\isundefined{\@quote}}%
+    {}%
+    {{\centering\begin{minipage}{\quotewidth}\centering\quotestyle{\@quote}\end{minipage}\\[2.5em]}}%
+  \par}% to avoid weird spacing bug at the first section if no blank line is left after \makecvtitle
+
+\makeatother
+
+

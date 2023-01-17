@@ -1,0 +1,102 @@
+\documentclass[10pt,letterpaper,sans]{moderncv}        % options ('10pt', '11pt', '12pt') ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') ('sans', 'roman')
+\usepackage{lmodern}
+\usepackage{etoolbox}
+\usepackage{subfiles}
+\usepackage{multicol}%for multiple columns
+\usepackage{enumitem}
+\usepackage[none]{hyphenat}
+\usepackage[backend=biber,defernumbers=true,style=ieee]{biblatex}
+\DeclareBibliographyCategory{nobibliography}
+\addbibresource{publications.bib}
+\setitemize{itemsep=1pt}
+\urlstyle{same}
+\usepackage{accsupp}
+\setlength{\multicolsep}{1pt}
+\newtoggle{references}
+\newtoggle{redact}
+% \toggletrue{references}
+% \toggletrue{redact}
+
+\input{theme}
+
+\name{Rory}{M. Flynn}
+% \title{\normalsize  Statistics, Data Science, and Research}
+% \title{\normalsize  Machine Learning, Statistics, and Data Science}
+\title{\normalsize  Data Science, Statistics, Machine Learning}
+
+\definecolor{colorbg1}{HTML}{f2e5bc}
+\definecolor{colorbg1}{HTML}{f9f5d7}
+\definecolor{colorbg1}{HTML}{ded4cc}
+\definecolor{colorbg1}{HTML}{e3dad3}
+\definecolor{colorbg1}{HTML}{e3deda}
+\newcommand{\headthing}[3]{\makebox[1cm]{\color{color1}#1} \BeginAccSupp{ActualText={#2 #3} }  \textbf{\color{color1}#2} \hspace*{\fill}#3 \EndAccSupp{}\\}
+\newcommand{\headurl}[3]{\makebox[1cm]{\color{color1}#1} \BeginAccSupp{ActualText={#2 #3} }  \textbf{\color{color1}#2} \hspace*{\fill}\url{#3} \EndAccSupp{}\\}
+
+\extrainfo{
+    \begin{minipage}{8cm}
+    \vspace{-1.1cm}
+    \begin{tikzpicture}
+	\node[rounded corners=9,fill=colorbg1,text width=7cm, inner xsep=0.1cm, inner ysep=0.2cm]{
+        \headthing{\faHome}{Location:}{\iftoggle{redact}{REDACTED}{Denver, Co }}
+        \headthing{{\large{\faMobile}}}{Phone :}{\iftoggle{redact}{REDACTED}{(970) 689 - 2239 }}
+        \headurl{\faEnvelope}{Email :}{\iftoggle{redact}{REDACTED}{rmfofco@gmail.com }}
+        \headurl{\faGlobe}{Website:}{RMFlynn.co}
+        \headurl{\faGithub}{Github:}{github.com/rmFlynn}
+        };
+    \end{tikzpicture}
+    \end{minipage}
+}
+%
+%------------------------------------------------------------------------------
+% \renewcommand{\labelitemi}{\raisebox{.2ex}{\small{\textcolor{color1}{$\bullet$}}}}
+\renewcommand{\labelitemi}{\BeginAccSupp{ActualText={-}} \raisebox{.2ex}{\small{\textcolor{color1}{$\bullet$}}} \EndAccSupp{}}
+%\newcommand{\sectiontwo}[1]{\setlength{\parskip}{0em} \section{#1}\setlength{\parskip}{0.5em}}
+%\newcommand{\subsectiontwo}[1]{\setlength{\parskip}{0em} \subsection{#1}\setlength{\parskip}{0.5em}}
+
+\renewcommand{\arraystretch}{1}
+%\setlength{\parskip}{0.8em}
+\vspace{5pt}
+% \setlength{\parskip}{0.5em}
+\newcommand{\shadebox}[1]{
+\begin{tikzpicture}
+  \node[rounded corners=9,fill=colorbg1,text width=\linewidth, inner xsep=0.1cm, inner ysep=0.0cm]{
+
+    \vspace{0.1cm}
+    \hspace{0.01 \linewidth}
+    \parbox[t]{0.965\linewidth}{
+      #1 }}; \end{tikzpicture}
+\vspace{-0.3cm}
+}
+
+\newcommand{\nonbox}[1]{
+
+    \vspace{0.1cm}
+    \hspace{0.02 \linewidth}
+    \parbox[t]{0.96\linewidth}{
+      #1 }
+    }
+%------------------------------------------------------------------------------
+
+\begin{document}
+
+\usetikzlibrary{shapes.misc, positioning}
+\makecvtitle
+
+\vspace{-13mm}
+
+%\subfile{statement.tex}
+
+\subfile{education.tex}
+
+\subfile{employment.tex}
+
+\subfile{publications.tex}
+
+\subfile{projects.tex}
+
+\subfile{skills.tex}
+
+
+\iftoggle{references}{\subfile{references.tex}}
+
+\end{document}

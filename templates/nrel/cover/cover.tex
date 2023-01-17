@@ -1,0 +1,126 @@
+% Template for Carleton letters
+% Author: Andrew Gainer-Dewar, 2014
+% This work is licensed under the Creative Commons Attribution 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+\documentclass[11pt,twoside]{letter}
+\usepackage{carlletter}
+
+% The Latin Modern font is a modernized replacement for the classic
+% Computer Modern. Feel free to replace this with a different font package.
+% (This font is a bit stuffy for a letter; you might replace it with Libertine, NewTX, or NewPX.)
+\usepackage{lmodern}
+
+\signature{Rory M. Flynn}
+\address{
+Rory M. Flynn\\
+101 Reed Pl.\\
+Longmont Co, 80504 \\\\
+Phone: (970) 689 2239\\
+Email: rmfofco@gmail.com\\
+}
+
+% Address the letter to a human name if possible
+% Look up the contact and find out how to address them
+% Make it clear why you are interested and what you can do to solve their problem in the opening paragraph.
+% Then in the body give specifics. Times you did the things that they need done
+% in the last repeat your interest and that you are the right person for the job
+% don't make it too much longer
+
+\begin{document}
+\begin{letter}{}
+
+
+ %%%%%%%%%%
+ % Needed %
+ %%%%%%%%%%
+\newcommand{\cname}
+{the National Renewable Energy Lab}
+\newcommand{\cnameshort}
+{NREL}
+\newcommand{\jname}{Researcher IIII- Commercial Building Software/ Data Engineer position}
+\newcommand{\opportunity}
+{return to an institution that I admire, and support scientific advances to improve the world}
+% {solve more data science problems using ML}
+\newcommand{\colabs}
+{lab scientists, engineers and domain experts of all fields}
+%the engineers
+% analysts
+% scientists
+% engineers
+
+ %%%%%%%%%%%
+ % toggles %
+ %%%%%%%%%%%
+\def \degree
+% {Computer Science}
+% {Computer Science, with a focus in data science for bio-medicine}
+{Computer Science, with a focus in Data Science}
+\newcommand{\thesisdata}
+% {medical}
+{}
+%{genetic}
+
+ %%%%%%%%%%%%%
+ % Optionals %
+ %%%%%%%%%%%%%
+\newcommand{\extrapar}
+{}
+\newcommand{\extraone}
+{}
+\newcommand{\class}
+{Statistical analysis in R, Software Development is C++, and Machine Learning with Keras/TensorFlow and SciKitLearn}
+% {Data Integration, Object-Oriented Software Development, and Simulation Design}
+% {Data Visualizations, Software Development, and Statistics}
+% {feature detection, statistical analysis, and predictive modeling}
+% {data integration, data storage, and data processing}
+% machine learning with Python and Keras
+% C++ programming, and advanced software development
+% machine learning
+% data visualization
+\newcommand{\extratwo}
+{My work experience includes being the head developer of the DRAM Open Source software project, Working in an agile team, and mastering software development tools for version control and documentation.}
+%{My work experience includes maintaining SQL databases, and developing models and novel analysis methodologies in HPC and cloud environments.}
+%{My work experience includes public research, maintaining SQL databases, and developing containerized software in HPC and cloud environments.}
+
+\opening{To whom it may concern,}
+
+\setlength{\parindent}{15pt} % Default is 15pt.
+
+\extrapar{}
+
+Thank you for taking time to consider this application for the \jname{} at \cname{}.
+I am a Computer Science and Statistics professional focused on Data Science, Software Development, and Machine Learning.
+I have a strong background in these subjects, and would love the opportunity to \opportunity{}.
+
+In addition to a bachelor's degree in Mathematics, I hold a master's degree in \degree{}.
+Through my degrees, I have received formal training in \class{}, and have sharpened these skills in industry.
+For example, I was previously a graduate intern at NREL for the grid modeling team, preparing data to run on the last generation of NREL's HPC.
+%I recently finished work on a thesis applying machine learning to a large \thesisdata{} data set.
+I have 5 years of experience, both in industry and academia, managing data and writing programs in the research industry.
+Most recently, I have been embedded in the award-winning Wrighton lab as a Research Software Engineer,
+using test-driven development to build ETL pipelines, analyzing TB of data and using tools like Plotly, P5.js, and  Matplotlib to create visuals of results.  
+% using test-driven development to analyze spatial and time series data, and using tools like P5.js to create animated visuals of results.  
+%interfacing with talented students and domain experts to enable research into the effects of the microbiome on agriculture, ecosystems, and climate.
+\extratwo{}
+% My first degree Bachelors of Science in Mathematics focusing in Statistics.
+% I have a long history working in Linux, and it is my preferred development environment.
+
+With this background, I have a deep understanding of the needs and challenges unique to making software for science and research.
+I hope to
+%CUT
+once again
+%CUT
+work productively with \colabs{} at \cnameshort{}.
+I continually strive to perfect skills, gain knowledge, and make work that I can be proud of.
+I would be honored to do so as part of your team.
+  \closing{Sincerely,}
+
+
+  % \ps{P.S.~Postscripts are optional.}
+  % \encl{An optional enclosure.}
+\end{letter}
+\end{document}
+
+
+
+
