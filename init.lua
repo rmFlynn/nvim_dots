@@ -71,11 +71,41 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  -- other plugins that I like
 
+  -- other plugins that I like
   'chrisbra/csv.vim',
   'jalvesaq/vimcmdline',
+  'pixelneo/vim-python-docstring',
+  'chrisbra/Colorizer',
 
+  -- Auto save!!!!!
+  '907th/vim-auto-save',
+
+  -- Coverage
+  -- 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
+  'vim-test/vim-test',
+
+  -- Also snakemake stuff I may need
+  -- Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+  -- Plug 'snakemake/snakefmt'
+
+  -- Plugins I used to like and may again
+  --Plug 'JuliaEditorSupport/julia-vim'
+  -- alt Highlighting
+  -- " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+  -- allt command line
+  -- Plug 'jalvesaq/vimcmdline'
+  -- Plug 'jiangmiao/auto-pairs'
+  -- Plug 'scrooloose/nerdtree'  " file list
+  -- Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
+  -- Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
+  -- Plug 'kien/ctrlp.vim'  " fuzzy search files
+  -- COC stuf
+  -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  -- Notes stuff
+  -- Plug 'xolox/vim-notes'
+  -- Plug 'xolox/vim-misc'
   'anott03/nvim-lspinstall',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
@@ -86,7 +116,6 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -172,8 +201,15 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',         opts = {} },
 
+
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  -- Files
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -216,7 +252,6 @@ require('lazy').setup({
 }, {})
 
 
--- vim.g.coc_global_extensions = { 'coc-diagnostic', 'coc-pyright', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-eslint', 'coc-json', 'coc-prettier', 'coc-css' }
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -276,18 +311,27 @@ vim.keymap.set('n', '<C-K>', "<C-W><C-K>", { silent = true })
 vim.keymap.set('n', '<C-L>', "<C-W><C-L>", { silent = true })
 vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
 
+
 -- vim repl mappings
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', "cmdline_map_start")
 vim.g.repl_split = 'right'
-vim.keymap.set({ 'n', 'v' }, '<Space>', ":ReplSend<CR>", { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Space>', ":ReplSend<CR><CR>", { silent = true })
 vim.keymap.set({ 'n' }, '<leader>rt', ":ReplToggle<CR>", { silent = true })
 vim.keymap.set({ 'n' }, '<leader>rb', ":ReplOpen bash<CR>", { silent = true })
 vim.keymap.set({ 'n' }, '<leader>rp', ":ReplOpen python<CR>", { silent = true })
 vim.keymap.set({ 'n' }, '<leader>rr', ":ReplRunCell<CR>", { silent = true })
 vim.keymap.set({ 'n' }, '<leader>rc', ":ReplClear<CR>", { silent = true })
 vim.g.completion_enable_auto_popup = 1
--- nnoremap <leader>rt :ReplToggle<CR>
 
+-- python-style
+vim.g.python_style = 'rest'
+
+-- enable AutoSave on Vim startup
+vim.g.auto_save = 1
+
+-- Maintain undo history between sessions
+vim.undofile = true
+vim.undodir = '~/.vim/undodir'
 -- nnoremap <leader>rc :ReplRunCell<CR>
 -- nmap <leader>rr <Plug>ReplSendLine
 -- vmap <leader>rr <Plug>ReplSendVisual
@@ -309,8 +353,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- " => Spelling stuff
+-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+-- set spelllang=en
+-- setlocal spell
+-- hi clear SpellBad
+-- hi SpellBad cterm=underline ctermfg=red
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+--
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -320,7 +371,23 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
+  },
 }
+require("telescope").load_extension "file_browser"
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -341,6 +408,8 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- open file_browser with the path of the current buffer
+vim.keymap.set("n", "<leader>so", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -407,6 +476,7 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -593,6 +663,10 @@ require('lspconfig')['pyright'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
 }
+--require('lspconfig')['pylint'].setup {
+--  on_attach = on_attach,
+--  flags = lsp_flags,
+--}
 require('lspconfig')['tsserver'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -607,3 +681,11 @@ require('lspconfig')['rust_analyzer'].setup {
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Restore cursor position
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.api.nvim_exec('silent! normal! g`"zv', false)
+  end,
+})
