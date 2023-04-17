@@ -35,12 +35,11 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
-
 -- Set <space> as the leader key
--- See `:help mapleader`
+-- See `:help mapleaderp
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = ';'
+vim.g.maplocalleader = ';'
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -73,9 +72,46 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- other plugins that I like
+  'chrisbra/csv.vim',
+  'jalvesaq/vimcmdline',
+  'pixelneo/vim-python-docstring',
+  'chrisbra/Colorizer',
+
+  -- Auto save!!!!!
+  '907th/vim-auto-save',
+
+  -- Coverage
+  -- 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
+  'vim-test/vim-test',
+
+  -- Also snakemake stuff I may need
+  -- Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+  -- Plug 'snakemake/snakefmt'
+
+  -- Plugins I used to like and may again
+  --Plug 'JuliaEditorSupport/julia-vim'
+  -- alt Highlighting
+  -- " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+  -- allt command line
+  -- Plug 'jalvesaq/vimcmdline'
+  -- Plug 'jiangmiao/auto-pairs'
+  -- Plug 'scrooloose/nerdtree'  " file list
+  -- Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "to highlight files in nerdtree
+  -- Plug 'Vimjas/vim-python-pep8-indent'  "better indenting for python
+  -- Plug 'kien/ctrlp.vim'  " fuzzy search files
+  -- COC stuf
+  -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  -- Notes stuff
+  -- Plug 'xolox/vim-notes'
+  -- Plug 'xolox/vim-misc'
+  'anott03/nvim-lspinstall',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
-  { -- LSP Configuration & Plugins
+  {
+    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -90,15 +126,36 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+  -- {
+  --   -- repl
+  --   'pappasam/nvim-repl',
+  --   dependencies = {
+  --     'tpope/vim-repeat',
+  --   },
+  -- },
 
-  { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  {
+    -- repl
+    'hkupty/iron.nvim'
   },
 
+  {
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'f3fora/cmp-spell',
+      'hrsh7th/cmp-path', },
+  },
+  -- {
+  --   'neoclide/coc.nvim', branch = 'release',
+  --   dependencies = {
+  --     'lervag/vimtex'
+  --   },
+  --  },
+
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  { 'folke/which-key.nvim',          opts = {} },
+  {
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -112,15 +169,25 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+
+  {
+    -- Theme
+    'morhetz/gruvbox',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 
-  { -- Set lualine as statusline
+  -- { -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+  {
+    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -133,7 +200,8 @@ require('lazy').setup({
     },
   },
 
-  { -- Add indentation guides even on blank lines
+  {
+    -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -144,10 +212,38 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
+
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  -- Files
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+
+  {
+    "psf/black"
+  },
+  -- {
+  --   'averms/black-nvim'
+  -- },
+  --
+  -- Testing
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  },
+  "nvim-neotest/neotest-python",
+  "nvim-neotest/neotest-plenary",
+  "nvim-neotest/neotest-vim-test",
+  "rouge8/neotest-rust",
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -162,7 +258,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -175,8 +272,9 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.autoformat',
+  require 'kickstart.plugins.debug',
+
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -188,6 +286,8 @@ require('lazy').setup({
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   { import = 'custom.plugins' },
 }, {})
+
+
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -234,11 +334,105 @@ vim.o.termguicolors = true
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set('n', '<leader>v', "<c-v>", { silent = true })
+
+vim.keymap.set('n', '<C-J>', "<C-W><C-J>", { silent = true })
+vim.keymap.set('n', '<C-K>', "<C-W><C-K>", { silent = true })
+vim.keymap.set('n', '<C-L>', "<C-W><C-L>", { silent = true })
+vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
+
+
+
+-- vim repl mappings
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', "cmdline_map_start")
+--
+-- vim.g.repl_split = 'right'
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', ":ReplSend<CR>", { silent = true })
+-- vim.keymap.set({ 'n' }, '<leader>rt', ":ReplToggle<CR>", { silent = true })
+-- vim.keymap.set({ 'n' }, '<leader>rb', ":ReplOpen bash<CR>", { silent = true })
+-- vim.keymap.set({ 'n' }, '<leader>rp', ":ReplOpen python<CR>", { silent = true })
+-- vim.keymap.set({ 'n' }, '<leader>rr', ":ReplRunCell<CR>", { silent = true })
+-- vim.keymap.set({ 'n' }, '<leader>rc', ":ReplClear<CR>", { silent = true })
+-- vim.g.completion_enable_auto_popup = 1
+local iron = require("iron.core")
+-- local view = require("iron.view")
+
+-- One can always use the default commands from vim directly
+
+iron.setup {
+  config = {
+    -- Whether a repl should be discarded or not
+    scratch_repl = true,
+    -- Your repl definitions come here
+    repl_definition = {
+      sh = {
+        -- Can be a table or a function that
+        -- returns a table (see below)
+        command = { "bash" }
+      }
+             },
+    repl_open_cmd = 'rightbelow vertical split',
+    -- How the repl window will be displayed
+    -- See below for more information
+    --repl_open_cmd = require('iron.view').split().right(),
+  },
+  -- Iron doesn't set keymaps by default anymore.
+  -- You can set them here or manually add keymaps to the functions in iron.core
+  keymaps = {
+    send_motion = "<shift-space>",
+    visual_send = "<space>",
+    send_file = "<leader>ra",
+    -- send_line = "<space>",
+    send_mark = "<leader>rs",
+    mark_motion = "<leader>rm",
+    mark_visual = "<leader>rm",
+    remove_mark = "<leader>ru",
+    cr = "<leader>r<cr>",
+    interrupt = "<leader>ri",
+    exit = "<leader>rq",
+    clear = "<leader>rc",
+  },
+  -- If the highlight is on, you can change how it looks
+  -- For the available options, check nvim_set_hl
+  highlight = {
+    italic = true
+  },
+  ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
+}
+
+-- iron also has a list of commands, see :h iron-commands for all available commands
+vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
+vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
+vim.keymap.set('n', '<leader>rb', '<cmd>IronAttach sh<cr>')
+vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
+vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
+vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')
+
+
+-- python-style
+vim.g.python_style = 'rest'
+
+-- enable AutoSave on Vim startup
+vim.g.auto_save = 1
+
+-- Maintain undo history between sessions
+vim.undofile = true
+vim.undodir = '~/.vim/undodir'
+-- nnoremap <leader>rc :ReplRunCell<CR>
+-- nmap <leader>rr <Plug>ReplSendLine
+-- vmap <leader>rr <Plug>ReplSendVisual
+-- let cmdline_map_send           = '<Space>'
+--let cmdline_map_send_and_stay  = '<LocalLeader><Space>'
+--let cmdline_map_source_fun     = '<LocalLeader>f'
+--let cmdline_map_send_paragraph = '<LocalLeader>p'
+--let cmdline_map_send_block     = '<LocalLeader>b'
+--let cmdline_map_quit           = '<LocalLeader>q'
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -251,18 +445,47 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- " => Spelling stuff
+-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+-- set spelllang=en
+-- setlocal spell
+-- hi clear SpellBad
+-- hi SpellBad cterm=underline ctermfg=red
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+--
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+            ['<C-u>'] = false,
+            ['<C-d>'] = false,
+            ["<C-o>"] = "select_vertical",
+            ["<C-S-o>"] = "select_horizontal",
+      },
+      n = {
+            ["<C-o>"] = "select_vertical",
+            ["<C-S-o>"] = "select_horizontal",
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+            ["i"] = {
+          -- your custom insert mode mappings
+        },
+            ["n"] = {
+          -- your custom normal mode mappings
+        },
       },
     },
   },
 }
+require("telescope").load_extension "file_browser"
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -278,11 +501,29 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+    require("neotest-rust")({
+      args = { "--no-capture" },
+    }),
+    require("neotest-plenary"),
+    require("neotest-vim-test")({
+      ignore_file_types = { "python", "vim", "lua" },
+    }),
+  },
+})
+
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- open file_browser with the path of the current buffer
+vim.keymap.set("n", "<leader>so", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -310,45 +551,46 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
       },
     },
     swap = {
       enable = true,
       swap_next = {
-        ['<leader>a'] = '@parameter.inner',
+            ['<leader>a'] = '@parameter.inner',
       },
       swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
+            ['<leader>A'] = '@parameter.inner',
       },
     },
   },
 }
+
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -409,14 +651,13 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
+  pylsp = {},
+  rust_analyzer = {},
+  tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+      telemetry = { enable = true },
     },
   },
 }
@@ -461,14 +702,14 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -477,7 +718,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -490,8 +731,101 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' }
   },
 }
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'pylsp' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+
+require("lspconfig")['pylsp'].setup {
+  filetypes = { "python" },
+  on_attach = on_attach,
+  flags = lsp_flags,
+  settings = {
+    pylsp = {
+      plugins = {
+        pydocstyle = {
+          ignore = { 'D400', 'D415', 'D212' },
+          enabled = true,
+        },
+        pycodestyle = {
+          maxLineLength = 88
+        },
+        flake8 = {
+          enabled = false,
+        },
+        black = {
+          enabled = true,
+        }
+      }
+    }
+  }
+}
+
+-- Try to get black good a proper
+--if vim.bo.filetype == "python" then
+vim.keymap.set('n', '<esc><esc>', ":Black<CR>:%s/\\s\\+$//e<CR>", { silent = true })
+
+--vim.g.black_linelength = 80
+
+--vim.cmd(":execute \"set colorcolumn=\" . (&colorcolumn == \"\" ? \"81\" : \"\")")
+vim.cmd("set fo+=t")
+vim.cmd("set textwidth=87")
+--end
+
+-- Key map for reload
+vim.keymap.set('n', '<leader>cc', ":tabnew ~/.config/nvim/init.lua  <CR>", { silent = true })
