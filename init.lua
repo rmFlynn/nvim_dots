@@ -36,7 +36,7 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
 -- Set <space> as the leader key
--- See `:help mapleaderp
+-- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
@@ -126,13 +126,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-  -- {
-  --   -- repl
-  --   'pappasam/nvim-repl',
-  --   dependencies = {
-  --     'tpope/vim-repeat',
-  --   },
-  -- },
 
   {
     -- repl
@@ -274,7 +267,6 @@ require('lazy').setup({
   --       Uncomment any of the lines below to enable them.
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
-
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -458,6 +450,7 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
+<<<<<<< HEAD
             ['<C-u>'] = false,
             ['<C-d>'] = false,
             ["<C-o>"] = "select_vertical",
@@ -466,6 +459,10 @@ require('telescope').setup {
       n = {
             ["<C-o>"] = "select_vertical",
             ["<C-S-o>"] = "select_horizontal",
+=======
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
   },
@@ -475,10 +472,17 @@ require('telescope').setup {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
+<<<<<<< HEAD
             ["i"] = {
           -- your custom insert mode mappings
         },
             ["n"] = {
+=======
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
           -- your custom normal mode mappings
         },
       },
@@ -501,6 +505,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
+<<<<<<< HEAD
 
 require("neotest").setup({
   adapters = {
@@ -517,6 +522,8 @@ require("neotest").setup({
   },
 })
 
+=======
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -551,18 +558,28 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
+<<<<<<< HEAD
             ['aa'] = '@parameter.outer',
             ['ia'] = '@parameter.inner',
             ['af'] = '@function.outer',
             ['if'] = '@function.inner',
             ['ac'] = '@class.outer',
             ['ic'] = '@class.inner',
+=======
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
+<<<<<<< HEAD
             [']m'] = '@function.outer',
             [']]'] = '@class.outer',
       },
@@ -577,15 +594,38 @@ require('nvim-treesitter.configs').setup {
       goto_previous_end = {
             ['[M'] = '@function.outer',
             ['[]'] = '@class.outer',
+=======
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
     swap = {
       enable = true,
       swap_next = {
+<<<<<<< HEAD
             ['<leader>a'] = '@parameter.inner',
       },
       swap_previous = {
             ['<leader>A'] = '@parameter.inner',
+=======
+        ['<leader>a'] = '@parameter.inner',
+      },
+      swap_previous = {
+        ['<leader>A'] = '@parameter.inner',
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
   },
@@ -651,6 +691,7 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
+<<<<<<< HEAD
   pylsp = {},
   rust_analyzer = {},
   tsserver = {},
@@ -658,6 +699,16 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = true },
+=======
+  -- pyright = {},
+  -- rust_analyzer = {},
+  -- tsserver = {},
+
+  lua_ls = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
     },
   },
 }
@@ -702,6 +753,7 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
+<<<<<<< HEAD
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
@@ -710,6 +762,16 @@ cmp.setup {
       select = true,
     },
         ['<Tab>'] = cmp.mapping(function(fallback)
+=======
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -718,11 +780,19 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
+<<<<<<< HEAD
         ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
+=======
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       else
         fallback()
       end
@@ -731,6 +801,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+<<<<<<< HEAD
     { name = 'path' }
   },
 }
@@ -751,6 +822,10 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
+=======
+  },
+}
+>>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
