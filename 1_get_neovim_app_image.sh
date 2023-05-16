@@ -17,5 +17,5 @@ mkdir -p $HOME/bin
 ln -sf $VIMPATH $HOME/bin/nvim
 
 TEXTTOPROFILE='export PATH="$HOME/bin:$PATH"'
- grep "$TEXTTOPROFILE"  $HOME/.bash_profile || echo $TEXTTOPROFILE >> $HOME/.bash_profile
+grep "$TEXTTOPROFILE"  $HOME/.bash_profile || echo $TEXTTOPROFILE >> $HOME/.bash_profile
 

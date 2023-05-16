@@ -41,6 +41,11 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
+-- "/usr/bin/python3.10'
+vim.g.python3_host_prog = '/home/rmflynn/docs/code_work/scratch_0401823/ascend-scheduler/scheduler_env/bin/python'
+vim.g.node_host_prog = '~/.nvm/versions/node/v18.16.0/bin/node'
+
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -74,12 +79,19 @@ require('lazy').setup({
 
   -- other plugins that I like
   'chrisbra/csv.vim',
-  'jalvesaq/vimcmdline',
+  -- 'jalvesaq/vimcmdline',
   'pixelneo/vim-python-docstring',
   'chrisbra/Colorizer',
 
   -- Auto save!!!!!
   '907th/vim-auto-save',
+
+  -- Spelling and Grammar
+  -- https://github.com/rhysd/vim-grammarous
+  -- https://github.com/kamykn/spelunker.vim
+  -- https://github.com/kamykn/spelunker.vim
+  'rhysd/vim-grammarous',
+
 
   -- Coverage
   -- 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
@@ -115,7 +127,7 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -126,7 +138,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
   {
     -- repl
     'hkupty/iron.nvim'
@@ -341,6 +352,7 @@ vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
 
 
 
+
 -- vim repl mappings
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', "cmdline_map_start")
 --
@@ -358,6 +370,7 @@ local iron = require("iron.core")
 -- One can always use the default commands from vim directly
 
 iron.setup {
+  ignore_blank_lines =false, -- ignore blank lines when sending visual select lines
   config = {
     -- Whether a repl should be discarded or not
     scratch_repl = true,
@@ -395,7 +408,6 @@ iron.setup {
   highlight = {
     italic = true
   },
-  ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
 }
 
 -- iron also has a list of commands, see :h iron-commands for all available commands
@@ -440,9 +452,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- " => Spelling stuff
 -- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 -- set spelllang=en
--- setlocal spell
 -- hi clear SpellBad
--- hi SpellBad cterm=underline ctermfg=red
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 --
@@ -450,7 +460,6 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-<<<<<<< HEAD
             ['<C-u>'] = false,
             ['<C-d>'] = false,
             ["<C-o>"] = "select_vertical",
@@ -459,10 +468,6 @@ require('telescope').setup {
       n = {
             ["<C-o>"] = "select_vertical",
             ["<C-S-o>"] = "select_horizontal",
-=======
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
   },
@@ -472,17 +477,10 @@ require('telescope').setup {
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
-<<<<<<< HEAD
             ["i"] = {
           -- your custom insert mode mappings
         },
             ["n"] = {
-=======
-        ["i"] = {
-          -- your custom insert mode mappings
-        },
-        ["n"] = {
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
           -- your custom normal mode mappings
         },
       },
@@ -495,7 +493,7 @@ require("telescope").load_extension "file_browser"
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>o', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -505,13 +503,10 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-<<<<<<< HEAD
 
 require("neotest").setup({
   adapters = {
-    require("neotest-python")({
-      dap = { justMyCode = false },
-    }),
+    require("neotest-python"),
     require("neotest-rust")({
       args = { "--no-capture" },
     }),
@@ -522,8 +517,6 @@ require("neotest").setup({
   },
 })
 
-=======
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -536,7 +529,7 @@ vim.keymap.set("n", "<leader>so", ":Telescope file_browser path=%:p:h select_buf
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -558,28 +551,18 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-<<<<<<< HEAD
             ['aa'] = '@parameter.outer',
             ['ia'] = '@parameter.inner',
             ['af'] = '@function.outer',
             ['if'] = '@function.inner',
             ['ac'] = '@class.outer',
             ['ic'] = '@class.inner',
-=======
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-<<<<<<< HEAD
             [']m'] = '@function.outer',
             [']]'] = '@class.outer',
       },
@@ -594,38 +577,15 @@ require('nvim-treesitter.configs').setup {
       goto_previous_end = {
             ['[M'] = '@function.outer',
             ['[]'] = '@class.outer',
-=======
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
     swap = {
       enable = true,
       swap_next = {
-<<<<<<< HEAD
             ['<leader>a'] = '@parameter.inner',
       },
       swap_previous = {
             ['<leader>A'] = '@parameter.inner',
-=======
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       },
     },
   },
@@ -691,7 +651,6 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-<<<<<<< HEAD
   pylsp = {},
   rust_analyzer = {},
   tsserver = {},
@@ -699,16 +658,6 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = true },
-=======
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
     },
   },
 }
@@ -753,7 +702,6 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-<<<<<<< HEAD
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete {},
@@ -762,16 +710,6 @@ cmp.setup {
       select = true,
     },
         ['<Tab>'] = cmp.mapping(function(fallback)
-=======
-    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -780,19 +718,11 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-<<<<<<< HEAD
         ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
-=======
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
       else
         fallback()
       end
@@ -801,7 +731,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-<<<<<<< HEAD
     { name = 'path' }
   },
 }
@@ -822,10 +751,6 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
-=======
-  },
-}
->>>>>>> e609c3a19ee93f6631912e8fb084bc4c9c8f63ac
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -866,6 +791,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+require("lspconfig").pyright.setup{}
 require("lspconfig")['pylsp'].setup {
   filetypes = { "python" },
   on_attach = on_attach,
@@ -873,18 +799,32 @@ require("lspconfig")['pylsp'].setup {
   settings = {
     pylsp = {
       plugins = {
+        pylint = {
+          enabled = false,
+        },
+        pyright= {
+          enabled = true,
+        },
+        isort = {
+          enabled = true,
+        },
         pydocstyle = {
-          ignore = { 'D400', 'D415', 'D212' },
+          ignore = {"D200", "D213", "D203", "D212"},
           enabled = true,
         },
         pycodestyle = {
-          maxLineLength = 88
+          maxLineLength = 100
         },
         flake8 = {
           enabled = false,
         },
         black = {
           enabled = true,
+          maxLineLength = 100
+        },
+        ruff = {
+          enabled = true,
+          maxLineLength = 100
         }
       }
     }
@@ -894,6 +834,8 @@ require("lspconfig")['pylsp'].setup {
 -- Try to get black good a proper
 --if vim.bo.filetype == "python" then
 vim.keymap.set('n', '<esc><esc>', ":Black<CR>:%s/\\s\\+$//e<CR>", { silent = true })
+vim.keymap.set('n', '<leader>mh', ":vertical resize -20 <CR>", { silent = true })
+vim.keymap.set('n', '<leader>ml', ":vertical resize +20 <CR>", { silent = true })
 
 --vim.g.black_linelength = 80
 
@@ -904,3 +846,16 @@ vim.cmd("set textwidth=87")
 
 -- Key map for reload
 vim.keymap.set('n', '<leader>cc', ":tabnew ~/.config/nvim/init.lua  <CR>", { silent = true })
+
+vim.keymap.set('t', "<esc>",  "<C-\\><C-n>", {silent = true })
+
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
+-- vim.opt.spelloptions("camel")
+
+-- vim.highlight.create('SpellBad', 'cterm=underline ctermfg=red')
+-- hi SpellBad cterm=underline ctermfg=red
+
+
+
+
