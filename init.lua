@@ -855,7 +855,3 @@ vim.opt.spelllang = 'en_us'
 
 -- vim.highlight.create('SpellBad', 'cterm=underline ctermfg=red')
 -- hi SpellBad cterm=underline ctermfg=red
-
-
-
-

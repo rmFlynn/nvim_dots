@@ -19,3 +19,8 @@ ln -sf $VIMPATH $HOME/bin/nvim
 TEXTTOPROFILE='export PATH="$HOME/bin:$PATH"'
 grep "$TEXTTOPROFILE"  $HOME/.bash_profile || echo $TEXTTOPROFILE >> $HOME/.bash_profile
 
+source $HOME/.bash_profile
+
+DOTS_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ln -s $DOTS_DIR ~/.config/nvim
+
