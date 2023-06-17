@@ -59,13 +59,13 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)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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
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+--    as they will be available in your neovim runtime.    const out_schema
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
