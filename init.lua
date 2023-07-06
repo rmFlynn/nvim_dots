@@ -379,12 +379,11 @@ vim.g.grammarous_jar_url = 'https://www.languagetool.org/download/LanguageTool-5
 -- vim.keymap.set({ 'n' }, '<leader>rc', ":ReplClear<CR>", { silent = true })
 -- vim.g.completion_enable_auto_popup = 1
 local iron = require("iron.core")
--- local view = require("iron.view")
+local view = require("iron.view")
 
 -- One can always use the default commands from vim directly
 
 iron.setup {
-  ignore_blank_lines =false, -- ignore blank lines when sending visual select lines
   config = {
     -- Whether a repl should be discarded or not
     scratch_repl = true,
@@ -394,9 +393,14 @@ iron.setup {
         -- Can be a table or a function that
         -- returns a table (see below)
         command = { "bash" }
-      }
-             },
-    repl_open_cmd = 'rightbelow vertical split',
+      },
+      python = {
+                command = { "python" },
+                -- format = require("iron.fts.common").bracketed_paste,
+            },
+    },
+    ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
+    repl_open_cmd = view.split.vertical.botright()
     -- How the repl window will be displayed
     -- See below for more information
     --repl_open_cmd = require('iron.view').split().right(),
@@ -428,6 +432,7 @@ iron.setup {
 vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
 vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
 vim.keymap.set('n', '<leader>rb', '<cmd>IronRepl sh<cr><cmd>IronAttach sh<cr>')
+vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl python<cr><cmd>IronAttach python<cr>')
 vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
 vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
 vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')
