@@ -59,7 +59,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)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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
+vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
