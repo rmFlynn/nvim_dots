@@ -20,7 +20,14 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
+    'theHamsta/nvim-dap-virtual-text',
+
     'leoluz/nvim-dap-go',
+    "nvim-dap-virtual-text",
+    "mfussenegger/nvim-dap-python",
+    "which-key.nvim",
+    "nvim-telescope/telescope-dap.nvim",
+    { "jbyuki/one-small-step-for-vimkind", module = "osv" },
   },
 
   config = function()
@@ -39,6 +46,7 @@ return {
         'delve',
       },
     }
+    require("dap-python").setup("python", {})
 
     -- You can provide additional configuration to the handlers,
     -- see mason-nvim-dap README for more information

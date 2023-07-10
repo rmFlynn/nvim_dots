@@ -85,6 +85,7 @@ require('lazy').setup({
     end
   },
 
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -970,4 +971,16 @@ vim.opt.spelllang = 'en_us'
 
 
 
+
+-- Windows helper
+in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+
+if in_wsl then
+    vim.g.clipboard = {
+        name = 'wsl clipboard',
+        copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+        -- paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
+        cache_enabled = true
+    }
+end
 
