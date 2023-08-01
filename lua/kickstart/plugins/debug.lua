@@ -19,7 +19,14 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
+    'theHamsta/nvim-dap-virtual-text',
+
     'leoluz/nvim-dap-go',
+    "nvim-dap-virtual-text",
+    "mfussenegger/nvim-dap-python",
+    "which-key.nvim",
+    "nvim-telescope/telescope-dap.nvim",
+    { "jbyuki/one-small-step-for-vimkind", module = "osv" },
   },
   config = function()
     local dap = require 'dap'
@@ -39,8 +46,10 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        "debugpy",
       },
     }
+    require("dap-python").setup("python", {})
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F5>', dap.continue)
@@ -75,7 +84,7 @@ return {
     }
     -- toggle to see last session result. Without this ,you can't see session output in case of unhandled exception.
     vim.keymap.set("n", "<F7>", dapui.toggle)
-    
+
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
