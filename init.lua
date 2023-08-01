@@ -47,8 +47,7 @@ vim.g.node_host_prog = '~/.nvm/versions/node/v18.16.0/bin/node'
 
 
 -- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+--    https://github.com/folke/lazy.nvim `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -60,13 +59,13 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)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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
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
+--    as they will be available in your neovim runtime.    const out_schema
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   --
@@ -78,6 +77,22 @@ require('lazy').setup({
      config = function()
        require("copilot").setup({})
      end,
+  },
+
+  -- You know what, billing starts june 30
+  {'zbirenbaum/copilot.lua',
+  cmd = "Copilot",
+  event = "InsertEnter",
+  config = function()
+    require("copilot").setup({})
+  end,
+  },
+  -- alt
+  { 'Exafunction/codeium.vim',
+    config = function ()
+    -- Change '<C-g>' here to any keycode you like.
+    vim.keymap.set('i', '<C-right>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+    end
   },
 
   -- Git related plugins
@@ -96,10 +111,7 @@ require('lazy').setup({
   -- Auto save!!!!!
   '907th/vim-auto-save',
 
-  -- Spelling and Grammar
-  -- https://github.com/rhysd/vim-grammarous
-  -- https://github.com/kamykn/spelunker.vim
-  -- https://github.com/kamykn/spelunker.vim
+  -- Spelling and Grammar, needs java-jre and zip
   'rhysd/vim-grammarous',
 
 
@@ -368,7 +380,9 @@ vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
 
 
 
-
+--Grammer
+--
+vim.g.grammarous_jar_url = 'https://www.languagetool.org/download/LanguageTool-5.9.zip'
 -- vim repl mappings
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', "cmdline_map_start")
 --
@@ -429,7 +443,7 @@ iron.setup {
 -- iron also has a list of commands, see :h iron-commands for all available commands
 vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
 vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
-vim.keymap.set('n', '<leader>rb', '<cmd>IronAttach sh<cr>')
+vim.keymap.set('n', '<leader>rb', '<cmd>IronRepl sh<cr><cmd>IronAttach sh<cr>')
 vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
 vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
 vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')
@@ -707,8 +721,19 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
+-- Set command for fugitive
+
+vim.keymap.set('n', '<leader>gc', ":Git commit<CR>", {})
+vim.keymap.set('n', '<leader>gu', ":Git add -u<CR>", {silent = true })
+vim.keymap.set('n', '<leader>gs', ":Git status<CR>", { silent = true })
+vim.keymap.set('n', '<leader>gdd', ":Gvdiffsplit<CR>", { silent = true })
+vim.keymap.set('n', '<leader>gdom', ":Git diff main<CR>", { silent = true })
+vim.keymap.set('n', '<leader>gdtm', ":Git difftool main<CR>", { silent = true })
+vim.keymap.set('n', '<leader>gdm', ":Gvdiffsplit main<CR>", { silent = true })
+vim.keymap.set('n', '<leader>gpl', ":Git pull<CR>", {})
+vim.keymap.set('n', '<leader>gps', ":Git push<CR>", {})
+
+-- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -752,7 +777,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'path' }
+    { name = 'path'}
   },
 }
 -- Set configuration for specific filetype.
@@ -813,7 +838,85 @@ local lsp_flags = {
 }
 
 require("lspconfig").pyright.setup{}
-require("lspconfig")['pylsp'].setup {
+require("lspconfig").textlsp.setup{
+    analysers = {
+        languagetool = {
+            enabled = false,
+            check_text = {
+                on_open = true,
+                on_save = true,
+                on_change = false,
+            }
+        },
+        gramformer = {
+            -- gramformer dependency needs to be installed manually
+            enabled = true,
+            gpu = false,
+            check_text = {
+                on_open = false,
+                on_save = true,
+                on_change = false,
+            }
+        },
+        hf_checker = {
+            enabled = true,
+            gpu = false,
+            model='pszemraj/flan-t5-large-grammar-synthesis',
+            -- model='pszemraj/grammar-synthesis-large',
+            min_length=40,
+            check_text = {
+                on_open = false,
+                on_save = true,
+                on_change = false,
+            }
+        },
+        hf_completion = {
+            enabled = true,
+            gpu = false,
+            model='bert-base-multilingual-cased',
+            topk=5,
+        },
+        openai = {
+            enabled = false,
+            api_key = '<MY_API_KEY>',
+            check_text = {
+                on_open = false,
+                on_save = false,
+                on_change = false,
+            },
+            -- model = 'text-ada-001',
+            model = 'text-babbage-001',
+            -- model = 'text-curie-001',
+            -- model = 'text-davinci-003',
+            edit_model = 'text-davinci-edit-001',
+            max_token = 16,
+        },
+        grammarbot = {
+            enabled = false,
+            api_key = '<MY_API_KEY>',
+            -- longer texts are split, this parameter sets the maximum number of splits per analysis
+            input_max_requests = 1,
+            check_text = {
+                on_open = false,
+                on_save = false,
+                on_change = false,
+            }
+        },
+    },
+    documents = {
+        org = {
+            org_todo_keywords = {
+                'TODO',
+                'IN_PROGRESS',
+                'DONE'
+            },
+        },
+        txt = {
+            parse = true,
+        },
+    },
+}
+require("lspconfig").pylsp.setup {
   filetypes = { "python" },
   on_attach = on_attach,
   flags = lsp_flags,
@@ -826,6 +929,9 @@ require("lspconfig")['pylsp'].setup {
         pyright= {
           enabled = true,
         },
+        textlsp= {
+          enabled = true,
+       },
         isort = {
           enabled = true,
         },
