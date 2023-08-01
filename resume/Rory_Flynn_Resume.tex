@@ -14,10 +14,12 @@
 \setlength{\multicolsep}{1pt}
 \newtoggle{references}
 \newtoggle{redact}
-% \toggletrue{references}
-% \toggletrue{redact}
+\toggletrue{references}
+\toggletrue{redact}
 
 \input{theme}
+
+
 
 \name{Rory}{M. Flynn}
 % \title{\normalsize  Statistics, Data Science, and Research}
@@ -46,6 +48,8 @@
     \end{tikzpicture}
     \end{minipage}
 }
+
+
 
 %
 %------------------------------------------------------------------------------
@@ -97,6 +101,9 @@
 % \subfile{projects.tex}
 
 \subfile{skills.tex}
+
+% \vspace{4mm}
+% \centerline{Full CV available on request!}
 
 \iftoggle{references}{\subfile{references.tex}}
 

@@ -15,7 +15,7 @@
 \newtoggle{references}
 \newtoggle{redact}
 % \toggletrue{references}
-% \toggletrue{redact}
+\toggletrue{redact}
 
 \input{theme}
 
@@ -29,6 +29,8 @@
 \definecolor{colorbg1}{HTML}{ded4cc}
 \definecolor{colorbg1}{HTML}{e3dad3}
 \definecolor{colorbg1}{HTML}{e3deda}
+
+
 \newcommand{\headthing}[3]{\makebox[1cm]{\color{color1}#1} \BeginAccSupp{ActualText={#2 #3} }  \textbf{\color{color1}#2} \hspace*{\fill}#3 \EndAccSupp{}\\}
 \newcommand{\headurl}[3]{\makebox[1cm]{\color{color1}#1} \BeginAccSupp{ActualText={#2 #3} }  \textbf{\color{color1}#2} \hspace*{\fill}\url{#3} \EndAccSupp{}\\}
 
@@ -64,7 +66,8 @@
     \vspace{0.1cm}
     \hspace{0.01 \linewidth}
     \parbox[t]{0.965\linewidth}{
-      #1 }}; \end{tikzpicture}
+      #1 }};
+  \end{tikzpicture}
 \vspace{-0.3cm}
 }
 

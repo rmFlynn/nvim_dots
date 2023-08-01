@@ -1,0 +1,50 @@
+Colorado State University
+1062 Campus Delivery Fort Collins CO 80523-1062.
+(970) 491-6444
+
+Lead developer of DRAM, a framework for exploring genetic data.
+Created complex, fully custom data visualizations for highly unique datasets.
+Manged large databases with SQL in an HPC environment.
+Presented work in posters and presentations including at international conferences.
+Lead developer and designer of DRAM2, a massive upgrade to DRAM with 50\%+ original code and 30\% original features, 10x speed improvements, and distributed computing support for AWS.
+Created 5 large scale complex ETL pipelines. Automated multi-day process, standardizing protocols, and maximizing use of HPC systems.
+Responded to and closed 100+ issues for lab maintained FOSS projects.
+Maintained Code base, Documentation, Conda environment, and CI.
+Worked with students and experts specializing in multiple disciplines, to collect, process and present key data and findings.
+Responded to and closed 100+ issues on Github/jera.
+Supported Students and postdoctoral staff by developing and communicating solutions data science, machine learning, and statistical tasks.
+Maintained Code base, Documentation, Code Quality Statistics, and Continues Integration on GitHub.
+
+
+University of Colorado Denver
+1201 Larimer St, Denver, CO 80204
+Machine learning apprentice/researcher/assistant
+(303) 315-5969
+
+
+
+
+Kelly Wrighton
+My current employer, and supervisor
+      Institution: Colorado State University, Department of Soil and Crop Science
+      Title: Associate Professor, Principal Investigator
+      Email: Wrighton@colostate.edu
+      Phone: (970) 999-2261
+      Address:
+      307 University Ave,
+      Fort Collins, CO 80521
+
+Dominique Bain, My former employer and direct supervisor
+      Institution:  National Renewable Energy Lab
+      Title:  Researcher II-Electrical Engineering
+      Email:  Dominique.Bain@nrel.gov
+      Phone:  (314) 910-7526
+
+Farnoush Banaei-kashani, My former professor and academic adviser.
+      Institution:  The University of Colorado Denver
+      Title:  Assistant Professor, Computer Science and Engineering
+      Email:  Farnoush.Banaei-kashani@ucdenver.edu
+      Phone:  (303)315-0116
+      Address:  
+      1200 Larimer St,  #3034
+      Denver 80204
