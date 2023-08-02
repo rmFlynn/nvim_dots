@@ -42,8 +42,8 @@ vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
 -- "/usr/bin/python3.10'
-vim.g.python3_host_prog = '/home/rmflynn/docs/code_work/scratch_0401823/ascend-scheduler/scheduler_env/bin/python'
-vim.g.node_host_prog = '~/.nvm/versions/node/v18.16.0/bin/node'
+vim.g.python3_host_prog = '/home/rmf/scratch_070623/traverse/venv/bin/python'
+vim.g.node_host_prog = '~/.nvm/versions/node/v20.4.0/bin/node'
 
 
 -- Install package manager
@@ -84,6 +84,8 @@ require('lazy').setup({
     vim.keymap.set('i', '<C-right>', function () return vim.fn['codeium#Accept']() end, { expr = true })
     end
   },
+
+
 
 
   -- Git related plugins
@@ -227,6 +229,7 @@ require('lazy').setup({
       options = {
         icons_enabled = false,
         theme = 'onedark',
+        path  =  1,
         component_separators = '|',
         section_separators = '',
       },
@@ -989,12 +992,25 @@ vim.opt.spelllang = 'en_us'
 -- Windows helper
 in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
 
-if in_wsl then
-    vim.g.clipboard = {
-        name = 'wsl clipboard',
-        copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
-        -- paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
-        cache_enabled = true
-    }
-end
+-- if in_wsl then
+--     vim.g.clipboard = {
+--         name = 'wsl clipboard',
+--         copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+--         paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
+--         cache_enabled = true
+--     }
+-- end
 
+
+vim.g.clipboard = {
+     name= 'WslClipboard',
+     copy={
+        ['+']= {'clip.exe'},
+        ['*']= {'clip.exe'},
+      },
+     paste={
+        ['+']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
+        ['*']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
+     },
+     cache_enabled= 0,
+   }

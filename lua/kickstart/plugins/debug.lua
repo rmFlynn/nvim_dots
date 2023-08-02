@@ -49,7 +49,7 @@ return {
         "debugpy",
       },
     }
-    require("dap-python").setup("python", {})
+    require("dap-python").setup()
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F5>', dap.continue)
