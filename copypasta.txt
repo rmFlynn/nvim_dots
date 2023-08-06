@@ -45,6 +45,6 @@ Farnoush Banaei-kashani, My former professor and academic adviser.
       Title:  Assistant Professor, Computer Science and Engineering
       Email:  Farnoush.Banaei-kashani@ucdenver.edu
       Phone:  (303)315-0116
-      Address:  
+      Address:
       1200 Larimer St,  #3034
       Denver 80204

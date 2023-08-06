@@ -1,0 +1,94 @@
+locations
+    USA, Colorado, Denver
+    CO-Denver-999 17th
+
+time type
+    Full time
+
+posted on
+    Posted 30+ Days Ago
+
+job requisition id
+    R0000145
+
+Are you looking to work for a company that has been recognized for over a decade as a Top Place to Work? Apply today to become a part of a company that continues to commit to putting our employees first.
+
+Salary Range:
+
+$58,510 - $91,366
+
+Job Description Summary:
+The CDS Data Analyst II is responsible for utilizing financial and healthcare data analysis methodologies to identify trends and create reports, dashboards and visualizations that provide business analytics and insights.
+
+Job Description:
+
+Essential Functions:
+
+    Analyzes, prepares, and reports on financial performance of contracts including but not limited to delegated risk, specialty and ancillary capitation and referral trends and utilization data 
+
+    Ability to synthesize large amounts of data and apply analytic methodologies to provide accurate reporting
+
+    Develops and maintains quality assurance (QA) processes and works with team members to ensure consistent application
+
+    Identifies opportunities for optimization and develops solutions in collaboration with our team and customers
+
+    Adheres to the company’s Compliance Program and to federal and state laws and regulations
+
+    Other duties as assigned
+
+Knowledge, Skills and Abilities:
+
+    Able to develop reports utilizing the appropriate company-approved reporting tools (SSRS/SSIS, Excel, Power BI) 
+
+    Working knowledge of relational databases and database theories and concepts
+
+    Very familiar with healthcare metrics, trends, and analytical and financial modeling techniques and methodologies
+
+    Skilled at creating reports and visualizations that meet business needs and tell a story with the data that helps drive decision-making
+
+    Able to work independently on assigned tasks, and prioritize work appropriately
+
+    Provides peer review for other analysts and makes recommendations
+
+    Able to apply knowledge as appropriate to develop reports and analyses
+
+    Solid verbal and written communication skills
+
+Qualifications:
+
+    Bachelor’s Degree in health administration, business administration, statistics, finance, business analytics or related field preferred or equivalent
+
+    2+ years’ experience performing data analysis in a health care claims setting
+
+    2+ years’ experience with SQL
+
+    Home office that is HIPAA compliant for all remote or telecommuting positions as outlined by the company policies and procedures
+
+About Physician Health Partners:
+PHP is an integrated team of physicians and health care professionals committed to supporting effective patient care throughout the health care continuum. PHP partners with Anthem, Centura Health, and Primary Physician Partners to create Colorado Community Health Alliance (CCHA) and meet the needs of Health First Colorado (Colorado’s Medicaid Program) members.
+
+We believe that our employees are our biggest assets, so we offer a robust benefits package that is not limited to:
+
+    Company pays majority of medical, dental, and vision premiums for employees/dependents
+
+    HSAs, including employer contribution FSAs, including medical, limited purpose, and dependent care
+
+    Paid Time Off
+
+    401(k) matching
+
+    Short-Term and Long-Term Disability coverage
+
+    Tuition Reimbursement
+
+    Rewards and Recognition program
+
+If you are interested in working for an innovative and collaborative workplace in the healthcare market, apply now!
+PHP - About Us
+PHP
+
+PHP believes primary care providers are the cornerstone of health care. Join our quickly growing organization working alongside hundreds of primary care and specialty providers to improve the health of patients. Our highly collaborative and diverse team works everyday to support providers in providing the right care, at the right time and in the right setting.
+Follow Us
+
+© 2023 Workday, Inc. All rights reserved.
+
