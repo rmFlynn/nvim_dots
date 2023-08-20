@@ -1,6 +1,23 @@
+Ascend Analytics
+1877 Broadway #706
+Boulder
+CO
+80302
+(303) 415-1400
+https://www.ascendanalytics.com/
+Software Engineer
+April 2023
+
+Developed software solutions for energy market research, in an Agile environment.
+Created data pipelines to extract, transform, and load data from diverse sources, including public databases and private APIs.
+Maintained, tested, and designed high performance REST API endpoints for data processing and retrieval. 
+Debugged and refactored derelict code, resulting in over 10x speed improvements to the retrieval of critical information. 
+Worked with energy managers, utility operators, and data aggregators to ensure the quality, and accuracy of pricing and energy data.
+
 Colorado State University
 1062 Campus Delivery Fort Collins CO 80523-1062.
 (970) 491-6444
+Research Software Engineer
 
 Lead developer of DRAM, a framework for exploring genetic data.
 Created complex, fully custom data visualizations for highly unique datasets.
