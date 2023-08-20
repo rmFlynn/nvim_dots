@@ -1,95 +1,119 @@
-locations
-    USA, Colorado, Denver
-    CO-Denver-999 17th
+ Data Management III - Temporary Aide - Hybrid Work Arrangements 
+Salary
 
-time type
-    Full time
+$2,263.20 Biweekly
+Location
 
-posted on
-    Posted 30+ Days Ago
+Denver Metro, CO
+Job Type
 
-job requisition id
-    R0000145
+Temporary Part Time (9 mos or less)
+Job Number
 
-Are you looking to work for a company that has been recognized for over a decade as a Top Place to Work? Apply today to become a part of a company that continues to commit to putting our employees first.
+ILA 80000 08/18/2023
+Department
 
-Salary Range:
+Colorado Department of Human Services
+Division
 
-$58,510 - $91,366
+OBH (Office of Behavioral Health)
+Opening Date
 
-Job Description Summary:
-The CDS Data Analyst II is responsible for utilizing financial and healthcare data analysis methodologies to identify trends and create reports, dashboards and visualizations that provide business analytics and insights.
+08/18/2023
+Closing Date
 
-Job Description:
+9/6/2023 11:59 PM Mountain
+Primary Physical Work Address
 
-Essential Functions:
+3824 W. Princeton Circle Denver, CO 80236
+FLSA Status
 
-    Analyzes, prepares, and reports on financial performance of contracts including but not limited to delegated risk, specialty and ancillary capitation and referral trends and utilization data
+Non-Exempt; position is eligible for overtime compensation.
 
-    Ability to synthesize large amounts of data and apply analytic methodologies to provide accurate reporting
+Description of Job
 
-    Develops and maintains quality assurance (QA) processes and works with team members to ensure consistent application
+    Hybrid Work Arrangements
 
-    Identifies opportunities for optimization and develops solutions in collaboration with our team and customers
+    Please note: These working arrangements are subject to change.
 
-    Adheres to the company’s Compliance Program and to federal and state laws and regulations
+    About this Unit:
 
-    Other duties as assigned
+    The objective of the Division of Behavioral Health Analytics, Epidemiology, and Evaluation (BHAEE) is to apply a broad range of knowledge and analytical skills to rapidly integrate, create, and share data and findings between multiple sources to ensure Agency leadership, external stakeholders, and the public have access to accurate and timely information and data to achieve objectives. This team draws on analytical skills in leadership, policy, program
+    management and public health communication.
 
-Knowledge, Skills and Abilities:
+    The Health Information Technology (HIT) Division develops and implements all of the BHA’s information technology efforts. This division also collaborates with the Analytics, Epidemiology, and Evaluation Division on data strategy. Between both divisions, they are tasked with modernizing the BHA’s data strategy. The Health Information Technology Division collaborates with other Departments on data and IT initiatives. This division played a key role, along with Colorado Digital Services, in implementing the BHA’s Care Directory, OwnPath.
 
-    Able to develop reports utilizing the appropriate company-approved reporting tools (SSRS/SSIS, Excel, Power BI)
+    About this Position:
 
-    Working knowledge of relational databases and database theories and concepts
+    This position is a Temporary Aide position with an anticipated end date of 9 months after hire date.  This position will be working approximately 20 to 40 hours per week.
 
-    Very familiar with healthcare metrics, trends, and analytical and financial modeling techniques and methodologies
+    Summary of Job Duties:
 
-    Skilled at creating reports and visualizations that meet business needs and tell a story with the data that helps drive decision-making
+        Data Collection and Cleaning: Collect and clean data from various sources, ensuring data accuracy, completeness, and consistency. Develop data cleaning routines and scripts to automate data cleaning processes.
+        Data Analysis: Analyze data using statistical methods and data visualization tools to identify patterns, trends, and insights. Collaborate with cross-functional teams to develop and execute data-driven solutions to business problems
+        Reporting: Develop and generate reports and dashboards to provide insights and recommendations to key stakeholders. Create visualizations and data summaries to effectively communicate complex data insights.
+        Documentation and Communication: Document data analysis processes, methods, and results. Communicate findings and recommendations to stakeholders through presentations, reports, and other means of communication
+        Process Improvement: Identify opportunities to improve data collection, processing, and analysis processes. Develop and implement new data analytics tools and techniques to increase efficiency and accuracy
 
-    Able to work independently on assigned tasks, and prioritize work appropriately
+Minimum Qualifications, Substitutions, Conditions of Employment & Appeal Rights
 
-    Provides peer review for other analysts and makes recommendations
 
-    Able to apply knowledge as appropriate to develop reports and analyses
+    Option 1 (Minimum Qualifications)
 
-    Solid verbal and written communication skills
+        Six (6) years of full time experience in an occupational field related to the work assigned to the position.
+        Please note: This experience must be clearly documented on your application and the supplemental questions must be answered.
 
-Qualifications:
 
-    Bachelor’s Degree in health administration, business administration, statistics, finance, business analytics or related field preferred or equivalent
+    Option 2 (Substitutions)
 
-    2+ years’ experience performing data analysis in a health care claims setting
+        Bachelor's degree from an accredited institution in a field of study related to the work assignment.
 
-    2+ years’ experience with SQL
+    And
 
-    Home office that is HIPAA compliant for all remote or telecommuting positions as outlined by the company policies and procedures
+        Two (2) years of professional experience in an occupational field related to the work assigned to the position.
 
-About Physician Health Partners:
-PHP is an integrated team of physicians and health care professionals committed to supporting effective patient care throughout the health care continuum. PHP partners with Anthem, Centura Health, and Primary Physician Partners to create Colorado Community Health Alliance (CCHA) and meet the needs of Health First Colorado (Colorado’s Medicaid Program) members.
+     Preferred Qualifications:
 
-We believe that our employees are our biggest assets, so we offer a robust benefits package that is not limited to:
+        3 years of data analytic work experience
+        Experience with the following: Tableau, SQL, R, and Python
 
-    Company pays majority of medical, dental, and vision premiums for employees/dependents
+    Conditions of Employment:
 
-    HSAs, including employer contribution FSAs, including medical, limited purpose, and dependent care
+        Standard Background – Name check, TRAILS, CMS and JBITS
+        Former State employees who were disciplinarily terminated or resigned in lieu of termination must disclose the information on the application and provide an explanation why the prior termination or resignation should not disqualify the applicant from the current position.  Absent extraordinary circumstances, prior disciplinary termination or resignation in lieu of termination will disqualify the applicant from future State employment with CDHS.
 
-    Paid Time Off
+Supplemental Information
 
-    401(k) matching
+    How to Apply
 
-    Short-Term and Long-Term Disability coverage
 
-    Tuition Reimbursement
 
-    Rewards and Recognition program
+    The Assessment Process
 
-If you are interested in working for an innovative and collaborative workplace in the healthcare market, apply now!
-PHP - About Us
-PHP
 
-PHP believes primary care providers are the cornerstone of health care. Join our quickly growing organization working alongside hundreds of primary care and specialty providers to improve the health of patients. Our highly collaborative and diverse team works everyday to support providers in providing the right care, at the right time and in the right setting.
-Follow Us
 
-© 2023 Workday, Inc. All rights reserved.
+    For additional recruiting questions, please contact Amber.Holcomb@state.co.us
 
+
+
+
+    About Us:
+
+    If your goal is to build a career that makes a difference, consider joining the dedicated people of the Colorado Department of Human Services (CDHS). Our professionals strive to design and deliver high quality human and health services that improve the safety, independence, and well-being of the people of Colorado.
+
+
+
+    Our Values:
+
+    We believe in a people-first approach: To serve the people of Colorado, we develop a culture and work environment that creates an energized, inspired, and healthy team capable of giving their best to Coloradans.
+
+    Balance creates quality of life: We want our team to be resilient through a supportive workplace that values flexibility, health and wellness, and employee engagement.
+
+    We hold ourselves accountable: We take responsibility through our actions, programs, and results for the state of health and human services in Colorado.
+
+    Transparency matters: We are open and honest with employees, our partners, the Coloradans we serve, and the public.
+
+    We are ethical: We abide by what is best for those we serve by doing what is right, not what is easy.
+
+    Collaboration helps us rise together: We work together with all partners, employees, and clients to achieve the best outcomes for Coloradans.
 
