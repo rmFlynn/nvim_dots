@@ -1,119 +1,70 @@
- Data Management III - Temporary Aide - Hybrid Work Arrangements 
-Salary
+Description
 
-$2,263.20 Biweekly
-Location
+    **This posting is open until filled** 
 
-Denver Metro, CO
-Job Type
+    We are seeking a highly skilled and motivated Data Engineer to join our county government's Data Services Team. As a Data Engineer, you will play a critical role in building and maintaining the data lifecycles and repositories that support our data-driven decision-making processes. Your expertise will enable the availability of high-quality data for various stakeholders within the organization. This role requires strong technical skills, a deep understanding of data architecture, and a passion for leveraging data to drive meaningful insights and improvements in government operations.
+Duties
 
-Temporary Part Time (9 mos or less)
-Job Number
+        Collaborate with cross-functional teams to understand data requirements, and design and implement scalable and efficient data pipelines to extract, transform, and load (ETL) data from various sources into data warehouses or data lakes.
+        Apply data transformation techniques to cleanse, validate, and enrich incoming data, ensuring its quality, integrity, and consistency.
+        Design and construct data warehouse schemas and tables to optimize data storage, retrieval, and analytics performance.
+        Develop and maintain data models to support the county government's reporting, analytics, and visualization needs.
+        Continuously monitor and enhance data pipelines and warehouse performance, identifying and resolving bottlenecks, and optimizing data retrieval and processing times.
+        Implement data security measures, including access controls and encryption, to protect sensitive information. Ensure compliance with relevant data privacy regulations.
+        Create and maintain comprehensive documentation for data pipelines, data models, and data dictionaries to facilitate knowledge sharing and support data governance initiatives.
+        Collaborate with data scientists, analysts, and other stakeholders to understand their data requirements and provide technical support, troubleshooting, and guidance on data-related issues.
 
-ILA 80000 08/18/2023
-Department
+     
 
-Colorado Department of Human Services
-Division
+    Skills, Abilities and Competencies:
 
-OBH (Office of Behavioral Health)
-Opening Date
+    Considerable knowledge of:   
 
-08/18/2023
-Closing Date
+        Data engineering, data warehousing, ETL processes, and data modeling
+        SQL, Python, and/or Java
+        Git/GitHub 
+        Cloud computing (Google Cloud Platform, AWS, etc.) 
+        Data Warehousing (BigQuery, Snowflake, DataBricks, etc.)
+        ETL processes 
+        Data Modeling
+        API development 
+        Data governance, data quality, and data security principles.
+            Project Management 
 
-9/6/2023 11:59 PM Mountain
-Primary Physical Work Address
+     
+    Some knowledge of:  
 
-3824 W. Princeton Circle Denver, CO 80236
-FLSA Status
+        Data visualization 
+        ITIL Framework 
 
-Non-Exempt; position is eligible for overtime compensation.
+     
+    Ability to:  
 
-Description of Job
-
-    Hybrid Work Arrangements
-
-    Please note: These working arrangements are subject to change.
-
-    About this Unit:
-
-    The objective of the Division of Behavioral Health Analytics, Epidemiology, and Evaluation (BHAEE) is to apply a broad range of knowledge and analytical skills to rapidly integrate, create, and share data and findings between multiple sources to ensure Agency leadership, external stakeholders, and the public have access to accurate and timely information and data to achieve objectives. This team draws on analytical skills in leadership, policy, program
-    management and public health communication.
-
-    The Health Information Technology (HIT) Division develops and implements all of the BHA’s information technology efforts. This division also collaborates with the Analytics, Epidemiology, and Evaluation Division on data strategy. Between both divisions, they are tasked with modernizing the BHA’s data strategy. The Health Information Technology Division collaborates with other Departments on data and IT initiatives. This division played a key role, along with Colorado Digital Services, in implementing the BHA’s Care Directory, OwnPath.
-
-    About this Position:
-
-    This position is a Temporary Aide position with an anticipated end date of 9 months after hire date.  This position will be working approximately 20 to 40 hours per week.
-
-    Summary of Job Duties:
-
-        Data Collection and Cleaning: Collect and clean data from various sources, ensuring data accuracy, completeness, and consistency. Develop data cleaning routines and scripts to automate data cleaning processes.
-        Data Analysis: Analyze data using statistical methods and data visualization tools to identify patterns, trends, and insights. Collaborate with cross-functional teams to develop and execute data-driven solutions to business problems
-        Reporting: Develop and generate reports and dashboards to provide insights and recommendations to key stakeholders. Create visualizations and data summaries to effectively communicate complex data insights.
-        Documentation and Communication: Document data analysis processes, methods, and results. Communicate findings and recommendations to stakeholders through presentations, reports, and other means of communication
-        Process Improvement: Identify opportunities to improve data collection, processing, and analysis processes. Develop and implement new data analytics tools and techniques to increase efficiency and accuracy
-
-Minimum Qualifications, Substitutions, Conditions of Employment & Appeal Rights
+        Develop ETL scripts. 
+        Manage cloud infrastructure. 
+        Set up error monitoring. 
+        Interact with external APIs. 
+        Implement version control best practices. 
+        Implement security best practices. 
+        Write testable code. 
+        Communicate with non-technical stakeholders and cross-functional teams. 
+        Manage and lead a team in a project-oriented environment.
 
 
-    Option 1 (Minimum Qualifications)
+    Behavioral Competencies (these are required for all positions at ACG):  
+    Accountability
+    Accessibility  
+    Inclusivity
+    Integrity
 
-        Six (6) years of full time experience in an occupational field related to the work assigned to the position.
-        Please note: This experience must be clearly documented on your application and the supplemental questions must be answered.
+Requirements
 
+    Education and Experience:   
 
-    Option 2 (Substitutions)
+        Bachelor's Degree from a fully accredited institution in Computer Science, Information Science, Engineering, or a related field
+        Three (3) years of full-time experience in data engineering or data analytics.   
+        Any equivalent combination of education and work experience that satisfy the requirements of the job will be considered. 
 
-        Bachelor's degree from an accredited institution in a field of study related to the work assignment.
+     
 
-    And
-
-        Two (2) years of professional experience in an occupational field related to the work assigned to the position.
-
-     Preferred Qualifications:
-
-        3 years of data analytic work experience
-        Experience with the following: Tableau, SQL, R, and Python
-
-    Conditions of Employment:
-
-        Standard Background – Name check, TRAILS, CMS and JBITS
-        Former State employees who were disciplinarily terminated or resigned in lieu of termination must disclose the information on the application and provide an explanation why the prior termination or resignation should not disqualify the applicant from the current position.  Absent extraordinary circumstances, prior disciplinary termination or resignation in lieu of termination will disqualify the applicant from future State employment with CDHS.
-
-Supplemental Information
-
-    How to Apply
-
-
-
-    The Assessment Process
-
-
-
-    For additional recruiting questions, please contact Amber.Holcomb@state.co.us
-
-
-
-
-    About Us:
-
-    If your goal is to build a career that makes a difference, consider joining the dedicated people of the Colorado Department of Human Services (CDHS). Our professionals strive to design and deliver high quality human and health services that improve the safety, independence, and well-being of the people of Colorado.
-
-
-
-    Our Values:
-
-    We believe in a people-first approach: To serve the people of Colorado, we develop a culture and work environment that creates an energized, inspired, and healthy team capable of giving their best to Coloradans.
-
-    Balance creates quality of life: We want our team to be resilient through a supportive workplace that values flexibility, health and wellness, and employee engagement.
-
-    We hold ourselves accountable: We take responsibility through our actions, programs, and results for the state of health and human services in Colorado.
-
-    Transparency matters: We are open and honest with employees, our partners, the Coloradans we serve, and the public.
-
-    We are ethical: We abide by what is best for those we serve by doing what is right, not what is easy.
-
-    Collaboration helps us rise together: We work together with all partners, employees, and clients to achieve the best outcomes for Coloradans.
 
