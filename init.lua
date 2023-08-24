@@ -4,6 +4,12 @@
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
 
+TODO:
+ Add descriptions to fuGitive short cuts
+ Add shortcut for the git map
+ Add a shortcut that is gd{n} where n is the comit you want to diff
+ Add smart history: https://github.com/nvim-telescope/telescope-smart-history.nvim
+
 Kickstart.nvim is *not* a distribution.
 
 Kickstart.nvim is a template for your own configuration.
@@ -91,6 +97,10 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'rbong/vim-flog',
+
+
+
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -235,6 +245,18 @@ require('lazy').setup({
       },
     },
   },
+  -- project suport
+  -- {
+  --   "ahmedkhalf/project.nvim",
+  --   config = function()
+  --     require("project_nvim").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --    }
+  --    end
+  -- },
+
 
   {
     -- Add indentation guides even on blank lines
@@ -259,6 +281,11 @@ require('lazy').setup({
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    dependencies = { "nvim-telescope/telescope-file-browser.nvim" }
+  },
+
 
   {
     "psf/black"
@@ -523,6 +550,11 @@ require('telescope').setup {
   },
 }
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension('project')
+
+
+
+
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -554,6 +586,7 @@ require("neotest").setup({
 
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sp', require('telescope').extensions.project.project, { desc = '[S]earch [P]rojects' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -725,7 +758,8 @@ mason_lspconfig.setup_handlers {
 -- Set command for fugitive
 
 vim.keymap.set('n', '<leader>gc', ":Git commit<CR>", {})
-vim.keymap.set('n', '<leader>gu', ":Git add -u<CR>", {silent = true })
+vim.keymap.set('n', '<leader>gau', ":Git add -u<CR>", {silent = true })
+vim.keymap.set('n', '<leader>gaf', ":Git add %<CR>", {silent = true })
 vim.keymap.set('n', '<leader>gs', ":Git status<CR>", { silent = true })
 vim.keymap.set('n', '<leader>gdd', ":Gvdiffsplit<CR>", { silent = true })
 vim.keymap.set('n', '<leader>gdom', ":Git diff main<CR>", { silent = true })
@@ -992,25 +1026,31 @@ vim.opt.spelllang = 'en_us'
 -- Windows helper
 in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
 
--- if in_wsl then
---     vim.g.clipboard = {
---         name = 'wsl clipboard',
---         copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
---         paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
---         cache_enabled = true
---     }
--- end
+if in_wsl then
+  vim.g.clipboard = {
+       name= 'WslClipboard',
+       copy={
+          ['+']= {'clip.exe'},
+          ['*']= {'clip.exe'},
+        },
+       --paste={
+       --   ['+']= {'/home/rmf/.config/nvim/paste.sh'},
+       --   ['*']= {'/home/rmf/.config/nvim/paste.sh'},
+       --},
+       cache_enabled= 0,
+     }
+end
 
 
-vim.g.clipboard = {
-     name= 'WslClipboard',
-     copy={
-        ['+']= {'clip.exe'},
-        ['*']= {'clip.exe'},
-      },
-     paste={
-        ['+']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
-        ['*']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
-     },
-     cache_enabled= 0,
-   }
+
+--project suport
+
+-- require("nvim-tree").setup({
+--   sync_root_with_cwd = true,
+--   respect_buf_cwd = true,
+--   update_focused_file = {
+--       enable = true,
+--     update_root = true
+--     },
+-- })
+
