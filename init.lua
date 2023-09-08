@@ -120,6 +120,16 @@ require('lazy').setup({
 
   -- Coverage
   -- 'kalekseev/vim-coverage.py', { 'do': ':UpdateRemotePlugins' }
+
+  {
+      "andythigpen/nvim-coverage",
+      requires = "nvim-lua/plenary.nvim",
+      -- Optional: needed for PHP when using the cobertura parser
+       rocks = { 'lua-xmlreader' },
+       config = function()
+          require("coverage").setup()
+       end,
+  },
   'vim-test/vim-test',
 
   -- Also snakemake stuff I may need
