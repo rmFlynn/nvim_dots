@@ -49,8 +49,8 @@ return {
         "debugpy",
       },
     }
-
-    require('dap-python').setup("/usr/bin/python")
+    --require('dap-python').setup("/usr/bin/python")
+    require("dap-python").setup()
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<leader>dn', dap.continue)

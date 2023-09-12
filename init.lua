@@ -42,8 +42,8 @@ vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
 -- "/usr/bin/python3.10'
-vim.g.python3_host_prog = '/home/rmflynn/docs/code_work/scratch_0401823/ascend-scheduler/scheduler_env/bin/python'
-vim.g.node_host_prog = '~/.nvm/versions/node/v18.16.0/bin/node'
+vim.g.python3_host_prog = '/home/rmf/scratch_070623/traverse/venv/bin/python'
+vim.g.node_host_prog = '~/.nvm/versions/node/v20.4.0/bin/node'
 
 
 -- Install package manager
@@ -96,6 +96,44 @@ require('lazy').setup({
   },
 
 
+{
+	"piersolenski/wtf.nvim",
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+	},
+	event = "VeryLazy",
+  	opts = {},
+	keys = {
+		{
+			"gw",
+			mode = { "n" },
+			function()
+				require("wtf").ai()
+			end,
+			desc = "Debug diagnostic with AI",
+		},
+		{
+			mode = { "n" },
+			"gW",
+			function()
+				require("wtf").search()
+			end,
+			desc = "Search diagnostic with Google",
+		},
+	},
+},
+{
+  "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+},
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -234,6 +272,7 @@ require('lazy').setup({
       options = {
         icons_enabled = false,
         theme = 'onedark',
+        path  =  1,
         component_separators = '|',
         section_separators = '',
       },
@@ -257,13 +296,15 @@ require('lazy').setup({
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
-
   -- Files
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
-
+  {
+    'nvim-telescope/telescope-smart-history.nvim',
+    dependencies = { "kkharji/sqlite.lua" }
+  },
   {
     "psf/black"
   },
@@ -499,8 +540,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 --
+
+vim.opt.spelloptions = "camel"
+
 require('telescope').setup {
   defaults = {
+    history = {
+      path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+      limit = 100,
+    },
     mappings = {
       i = {
             ['<C-u>'] = false,
@@ -531,6 +579,7 @@ require('telescope').setup {
   },
 }
 require("telescope").load_extension "file_browser"
+require('telescope').load_extension('smart_history')
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -1034,3 +1083,29 @@ require('copilot').setup({
   copilot_node_command = 'node', -- Node.js version must be > 16.x
   server_opts_overrides = {},
 })
+
+-- Windows helper
+in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+
+if in_wsl then
+    vim.g.clipboard = {
+         name= 'WslClipboard',
+         copy={
+            ['+']= {'clip.exe'},
+            ['*']= {'clip.exe'},
+          },
+         paste={
+            ['+']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
+            ['*']= {'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\''},
+         },
+         cache_enabled= 0,
+       }
+--     vim.g.clipboard = {
+--         name = 'wsl clipboard',
+--         copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+--         paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
+--         cache_enabled = true
+--     }
+end
+
+
