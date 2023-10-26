@@ -517,7 +517,7 @@ iron.setup {
 				-- format = require("iron.fts.common").bracketed_paste,
 			},
 		},
-		ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
+		ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
 		repl_open_cmd = view.split.vertical.botright()
 		-- How the repl window will be displayed
 		-- See below for more information
@@ -550,7 +550,7 @@ iron.setup {
 vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
 vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
 vim.keymap.set('n', '<leader>rb', '<cmd>IronRepl sh<cr><cmd>IronAttach sh<cr>')
-vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl python<cr><cmd>IronAttach python<cr>')
+vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl python<cr><cmd>IronAttach ipython<cr>')
 vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
 vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
 vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')
@@ -1150,6 +1150,9 @@ require('copilot').setup({
 	copilot_node_command = 'node', -- Node.js version must be > 16.x
 	server_opts_overrides = {},
 })
+
+-- copy paste
+vim.keymap.set('n', 'C-c', "\"+y")
 
 -- Windows helper
 in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
