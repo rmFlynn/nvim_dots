@@ -6,7 +6,7 @@
 
 TODO:
  Add descriptions to fuGitive short cuts
- Add shortcut for the git map
+ Apply the Jupiter notebook solution and fix the key bindings
 
 Kickstart.nvim is *not* a distribution.
 
@@ -46,7 +46,7 @@ vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
 -- "/usr/bin/python3.10'
-vim.g.python3_host_prog = '/home/rmf/scratch_070623/traverse/venv/bin/python'
+vim.g.python3_host_prog = '~/.config/nvim/nvim_venv/bin/python3'
 vim.g.node_host_prog = '~/.nvm/versions/node/v20.4.0/bin/node'
 
 
@@ -100,8 +100,6 @@ require('lazy').setup({
 			vim.keymap.set('i', '<C-right>', function() return vim.fn['codeium#Accept']() end, { expr = true })
 		end
 	},
-
-
 	{
 		"piersolenski/wtf.nvim",
 		dependencies = {
@@ -145,8 +143,18 @@ require('lazy').setup({
 	'tpope/vim-rhubarb',
 	'rbong/vim-flog',
 
-
-
+	-- DS plugins
+	-- This is for Jupiter
+	-- 'luk400/vim-jukit',
+	-- "jupynium"
+	{
+		"kiyoon/jupynium.nvim",
+		build = "pip3 install .",
+		-- build = "conda run --no-capture-output -n jupynium pip install .",
+		-- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
+	},
+	"rcarriga/nvim-notify",   -- optional
+	"stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
 
 	-- Detect tabstop and shiftwidth automatically
 	'tpope/vim-sleuth',
@@ -395,6 +403,54 @@ require('lazy').setup({
 			return vim.fn.executable 'make' == 1
 		end,
 	},
+        {
+            "aaronhallaert/advanced-git-search.nvim",
+            config = function()
+                -- optional: setup telescope before loading the extension
+                require("telescope").setup{
+                    -- move this to the place where you call the telescope setup function
+                    extensions = {
+                        advanced_git_search = {
+                                -- fugitive or diffview
+                                diff_plugin = "fugitive",
+                                -- customize git in previewer
+                                -- e.g. flags such as { "--no-pager" }, or { "-c", "delta.side-by-side=false" }
+                                git_flags = {},
+                                -- customize git diff in previewer
+                                -- e.g. flags such as { "--raw" }
+                                git_diff_flags = {},
+                                -- Show builtin git pickers when executing "show_custom_functions" or :AdvancedGitSearch
+                                show_builtin_git_pickers = false,
+                                entry_default_author_or_date = "author", -- one of "author" or "date"
+
+                                -- Telescope layout setup
+                                telescope_theme = {
+                                    function_name_1 = {
+                                        -- Theme options
+                                    },
+                                    function_name_2 = "dropdown",
+                                    -- e.g. realistic example
+                                    show_custom_functions = {
+                                        layout_config = { width = 0.4, height = 0.4 },
+                                    },
+
+                                }
+                            }
+                    }
+                }
+                require("telescope").load_extension("advanced_git_search")
+            end,
+            dependencies = {
+                "nvim-telescope/telescope.nvim",
+                -- to show diff splits and open commits in browser
+                "tpope/vim-fugitive",
+                -- to open commits in browser with fugitive
+                "tpope/vim-rhubarb",
+                -- optional: to replace the diff from fugitive with diffview.nvim
+                -- (fugitive is still needed to open in browser)
+                -- "sindrets/diffview.nvim",
+            },
+        },
 
 	{
 		-- Highlight, edit, and navigate code
@@ -480,6 +536,35 @@ vim.keymap.set('n', '<C-K>', "<C-W><C-K>", { silent = true })
 vim.keymap.set('n', '<C-L>', "<C-W><C-L>", { silent = true })
 vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
 
+-- jukit keymaps
+-- --nnoremap <leader>so :call jukit#splits#show_last_cell_output(1)<cr>
+-- vim.keymap.set('n', '<leader>jo', ":call jukit#splits#show_last_cell_output(1)", { silent = true })
+-- --nnoremap <leader>rpd :call jukit#convert#save_nb_to_file(1,1,'pdf')<cr>
+-- vim.keymap.set('n', '<leader>jpdf', ":call jukit#splits#show_last_cell_output(1)", { silent = true })
+-- -- vnnoremap <leader>os :call jukit#splits#output()<cr>
+-- vim.keymap.set('n', '<leader>jos', ":call jukit#splits#output()<cr>", { silent = true })
+-- -- "   - Opens a new output window and executes the command specified in `g:jukit_shell_cmd`
+-- -- nnoremap <leader>ts :call jukit#splits#term()<cr>
+-- vim.keymap.set('n', '<leader>jts', ":call jukit#splits#term()", { silent = true })
+-- -- "   - Opens a new output window without executing any command
+-- -- nnoremap <leader>hs :call jukit#splits#history()<cr>
+-- vim.keymap.set('n', '<leader>jhs ', ":call jukit#splits#history()", { silent = true })
+-- -- "   - Opens a new output-history window, where saved ipython outputs are displayed
+-- -- nnoremap <leader>ohs :call jukit#splits#output_and_history()<cr>
+-- vim.keymap.set('n', '<leader>johs ', ":call jukit#splits#output_and_history()", { silent = true })
+-- -- "   - Shortcut for opening output terminal and output-history
+-- -- nnoremap <leader>hd :call jukit#splits#close_history()<cr>
+-- vim.keymap.set('n', '<leader>jhd ', ":call jukit#splits#close_history()", { silent = true })
+-- -- "   - Close output-history window
+-- -- nnoremap <leader>od :call jukit#splits#close_output_split()<cr>
+-- vim.keymap.set('n', '<leader>jod ', ":call jukit#splits#close_output_split()", { silent = true })
+-- -- "   - Close output window
+-- -- nnoremap <leader>ohd :call jukit#splits#close_output_and_history(1)<cr>
+-- vim.keymap.set('n', '<leader>johd ', ":call jukit#splits#close_output_and_history(1)", { silent = true })
+
+
+
+
 
 
 --Grammer
@@ -513,7 +598,7 @@ iron.setup {
 				command = { "bash" }
 			},
 			python = {
-				command = { "python" },
+				command = { "ipython" },
 				-- format = require("iron.fts.common").bracketed_paste,
 			},
 		},
