@@ -53,8 +53,9 @@ vim.g.python3_host_prog = '~/.config/nvim/nvim_venv/bin/python3'
 vim.g.node_host_prog = '~/.nvm/versions/node/v20.4.0/bin/node'
 
 
--- Install package manager
---    https://github.com/folke/lazy.nvim `:help lazy.nvim.txt` for more info
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -152,15 +153,6 @@ require('lazy').setup({
   -- This is for Jupiter
   -- 'luk400/vim-jukit',
   -- "jupynium"
-  {
-    "kiyoon/jupynium.nvim",
-    build = "pip3 install .",
-    -- build = "conda run --no-capture-output -n jupynium pip install .",
-    -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
-  },
-  "rcarriga/nvim-notify",   -- optional
-  "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -228,9 +220,6 @@ require('lazy').setup({
   -- COC stuf
   -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  -- Notes stuff
-  -- Plug 'xolox/vim-notes'
-  -- Plug 'xolox/vim-misc'
   'anott03/nvim-lspinstall',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
@@ -240,20 +229,16 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
-  },
-  {
-    -- repl
-    'hkupty/iron.nvim'
   },
 
   {
@@ -290,6 +275,7 @@ require('lazy').setup({
   { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git reeated signs to the gutter, as well as utilities for managing changes
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -332,7 +318,9 @@ require('lazy').setup({
     'morhetz/gruvbox',
     priority = 1000,
     config = function()
+      vim.o.termguicolors = true
       vim.cmd.colorscheme 'gruvbox'
+      vim.cmd 'highlight Normal ctermbg=NONE guibg=NONE'
     end,
   },
 
@@ -362,15 +350,6 @@ require('lazy').setup({
   --    end
   -- },
 
-
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = 'ibl',
-    opts = {},
-  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -416,13 +395,23 @@ require('lazy').setup({
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        -- NOTE: If you are having trouble with this installation,
+        --       refer to the README for telescope-fzf-native for more instructions.
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+    },
   },
   {
     "aaronhallaert/advanced-git-search.nvim",
@@ -488,9 +477,10 @@ require('lazy').setup({
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
+  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
@@ -522,7 +512,7 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
--- Case insensitive searching UNLESS \C or capital in search
+-- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
@@ -590,75 +580,6 @@ vim.keymap.set('n', '<C-H>', "<C-W><C-H>", { silent = true })
 --Grammer
 --
 vim.g.grammarous_jar_url = 'https://www.languagetool.org/download/LanguageTool-5.9.zip'
--- vim repl mappings
--- vim.keymap.set({ 'n', 'v' }, '<Space>', "cmdline_map_start")
---
--- vim.g.repl_split = 'right'
--- vim.keymap.set({ 'n', 'v' }, '<Space>', ":ReplSend<CR>", { silent = true })
--- vim.keymap.set({ 'n' }, '<leader>rt', ":ReplToggle<CR>", { silent = true })
--- vim.keymap.set({ 'n' }, '<leader>rb', ":ReplOpen bash<CR>", { silent = true })
--- vim.keymap.set({ 'n' }, '<leader>rp', ":ReplOpen python<CR>", { silent = true })
--- vim.keymap.set({ 'n' }, '<leader>rr', ":ReplRunCell<CR>", { silent = true })
--- vim.keymap.set({ 'n' }, '<leader>rc', ":ReplClear<CR>", { silent = true })
--- vim.g.completion_enable_auto_popup = 1
-local iron = require("iron.core")
-local view = require("iron.view")
-
--- One can always use the default commands from vim directly
-
-iron.setup {
-  config = {
-    -- Whether a repl should be discarded or not
-    scratch_repl = true,
-    -- Your repl definitions come here
-    repl_definition = {
-      sh = {
-        -- Can be a table or a function that
-        -- returns a table (see below)
-        command = { "bash" }
-      },
-      python = {
-        command = { "ipython" },
-        -- format = require("iron.fts.common").bracketed_paste,
-      },
-    },
-    ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
-    repl_open_cmd = view.split.vertical.botright()
-    -- How the repl window will be displayed
-    -- See below for more information
-    --repl_open_cmd = require('iron.view').split().right(),
-  },
-  -- Iron doesn't set keymaps by default anymore.
-  -- You can set them here or manually add keymaps to the functions in iron.core
-  keymaps = {
-    send_motion = "<shift-space>",
-    visual_send = "<space>",
-    send_file = "<leader>ra",
-    -- send_line = "<space>",
-    send_mark = "<leader>rs",
-    mark_motion = "<leader>rm",
-    mark_visual = "<leader>rm",
-    remove_mark = "<leader>ru",
-    cr = "<leader>r<cr>",
-    interrupt = "<leader>ri",
-    exit = "<leader>rq",
-    clear = "<leader>rc",
-  },
-  -- If the highlight is on, you can change how it looks
-  -- For the available options, check nvim_set_hl
-  highlight = {
-    italic = true
-  },
-}
-
--- iron also has a list of commands, see :h iron-commands for all available commands
-vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
-vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
-vim.keymap.set('n', '<leader>rb', '<cmd>IronRepl sh<cr><cmd>IronAttach sh<cr>')
-vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl python<cr><cmd>IronAttach ipython<cr>')
-vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
-vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
-vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')
 
 
 -- python-style
@@ -683,6 +604,12 @@ vim.undodir = '~/.vim/undodir'
 --let cmdline_map_send_paragraph = '<LocalLeader>p'
 --let cmdline_map_send_block     = '<LocalLeader>b'
 --let cmdline_map_quit           = '<LocalLeader>q'
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -763,8 +690,7 @@ local function find_git_root()
   end
 
   -- Find the Git root directory from the current file's path
-  local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")
-      [1]
+  local git_root = vim.fn.systemlist("git -C " .. vim.fn.escape(current_dir, " ") .. " rev-parse --show-toplevel")[1]
   if vim.v.shell_error ~= 0 then
     print("Not a git repository. Searching on current working directory")
     return cwd
@@ -777,12 +703,13 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = { git_root },
+      search_dirs = {git_root},
     })
   end
 end
 
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>o', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -818,19 +745,20 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 -- open file_browser with the path of the current buffer
 vim.keymap.set("n", "<leader>so", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+-- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
 
-    highlight = { enable = true },
-    indent = { enable = true, disable = { 'python' } },
+    indent = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -960,6 +888,9 @@ require('mason-lspconfig').setup()
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+--
+--  If you want to override the default filetypes that your language server will attach to you can
+--  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
   -- gopls = {},

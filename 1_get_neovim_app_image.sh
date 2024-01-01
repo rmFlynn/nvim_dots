@@ -2,8 +2,9 @@
 
 # You dont need to run this if you installed neovim in a normal whay
 
-# you can ge the version here
-VERSION=v0.8.2
+# you can get the version here
+#
+VERSION=v0.9.4
 
 mkdir appimage
 cd appimage
