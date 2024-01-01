@@ -220,7 +220,7 @@ return {
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
     -- Set command for fugitive
-    
+
     vim.keymap.set('n', '<leader>gc', ":Git commit<CR>", {})
     vim.keymap.set('n', '<leader>gau', ":Git add -u<CR>", { silent = true })
     vim.keymap.set('n', '<leader>gaf', ":Git add %<CR>", { silent = true })
@@ -239,279 +239,279 @@ return {
     vim.keymap.set('n', '<leader>gpl', ":Git pull<CR>", {})
     vim.keymap.set('n', '<leader>gps', ":Git push<CR>", {})
 
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
-})
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'pylsp' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
-})
+    -- Set configuration for specific filetype.
+    cmp.setup.filetype('gitcommit', {
+      sources = cmp.config.sources({
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+      }, {
+        { name = 'buffer' },
+      })
+    })
+    -- Set configuration for specific filetype.
+    cmp.setup.filetype('gitcommit', {
+      sources = cmp.config.sources({
+        { name = 'pylsp' }, -- You can specify the `cmp_git` source if you were installed it.
+      }, {
+        { name = 'buffer' },
+      })
+    })
 
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+    -- Mappings.
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- Use an on_attach function to only map the following keys
+    -- after the language server attaches to the current buffer
+    local on_attach = function(client, bufnr)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
+      end, bufopts)
+      vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    end
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
+    local lsp_flags = {
+      -- This is the default in Nvim 0.7+
+      debounce_text_changes = 150,
+    }
 
-require("lspconfig").pyright.setup {}
-require("lspconfig").textlsp.setup {
-  analysers = {
-    languagetool = {
-      enabled = false,
-      check_text = {
-        on_open = true,
-        on_save = true,
-        on_change = false,
-      }
-    },
-    gramformer = {
-      -- gramformer dependency needs to be installed manually
-      enabled = true,
-      gpu = false,
-      check_text = {
-        on_open = false,
-        on_save = true,
-        on_change = false,
-      }
-    },
-    hf_checker = {
-      enabled = true,
-      gpu = false,
-      model = 'pszemraj/flan-t5-large-grammar-synthesis',
-      -- model='pszemraj/grammar-synthesis-large',
-      min_length = 40,
-      check_text = {
-        on_open = false,
-        on_save = true,
-        on_change = false,
-      }
-    },
-    hf_completion = {
-      enabled = true,
-      gpu = false,
-      model = 'bert-base-multilingual-cased',
-      topk = 5,
-    },
-    openai = {
-      enabled = false,
-      api_key = '<MY_API_KEY>',
-      check_text = {
-        on_open = false,
-        on_save = false,
-        on_change = false,
-      },
-      -- model = 'text-ada-001',
-      model = 'text-babbage-001',
-      -- model = 'text-curie-001',
-      -- model = 'text-davinci-003',
-      edit_model = 'text-davinci-edit-001',
-      max_token = 16,
-    },
-    grammarbot = {
-      enabled = false,
-      api_key = '<MY_API_KEY>',
-      -- longer texts are split, this parameter sets the maximum number of splits per analysis
-      input_max_requests = 1,
-      check_text = {
-        on_open = false,
-        on_save = false,
-        on_change = false,
-      }
-    },
-  },
-  documents = {
-    org = {
-      org_todo_keywords = {
-        'TODO',
-        'IN_PROGRESS',
-        'DONE'
-      },
-    },
-    txt = {
-      parse = true,
-    },
-  },
-}
-require("lspconfig").pylsp.setup {
-  filetypes = { "python" },
-  on_attach = on_attach,
-  flags = lsp_flags,
-  settings = {
-    pylsp = {
-      plugins = {
-        pylint = {
+    require("lspconfig").pyright.setup {}
+    require("lspconfig").textlsp.setup {
+      analysers = {
+        languagetool = {
           enabled = false,
+          check_text = {
+            on_open = true,
+            on_save = true,
+            on_change = false,
+          }
         },
-        pyright = {
+        gramformer = {
+          -- gramformer dependency needs to be installed manually
           enabled = true,
+          gpu = false,
+          check_text = {
+            on_open = false,
+            on_save = true,
+            on_change = false,
+          }
         },
-        textlsp = {
+        hf_checker = {
           enabled = true,
+          gpu = false,
+          model = 'pszemraj/flan-t5-large-grammar-synthesis',
+          -- model='pszemraj/grammar-synthesis-large',
+          min_length = 40,
+          check_text = {
+            on_open = false,
+            on_save = true,
+            on_change = false,
+          }
         },
-        isort = {
+        hf_completion = {
           enabled = true,
+          gpu = false,
+          model = 'bert-base-multilingual-cased',
+          topk = 5,
         },
-        pydocstyle = {
-          ignore = { "D200", "D213", "D203", "D212" },
-          enabled = true,
-        },
-        pycodestyle = {
-          maxLineLength = 100
-        },
-        flake8 = {
+        openai = {
           enabled = false,
+          api_key = '<MY_API_KEY>',
+          check_text = {
+            on_open = false,
+            on_save = false,
+            on_change = false,
+          },
+          -- model = 'text-ada-001',
+          model = 'text-babbage-001',
+          -- model = 'text-curie-001',
+          -- model = 'text-davinci-003',
+          edit_model = 'text-davinci-edit-001',
+          max_token = 16,
         },
-        black = {
-          enabled = true,
-          maxLineLength = 100
+        grammarbot = {
+          enabled = false,
+          api_key = '<MY_API_KEY>',
+          -- longer texts are split, this parameter sets the maximum number of splits per analysis
+          input_max_requests = 1,
+          check_text = {
+            on_open = false,
+            on_save = false,
+            on_change = false,
+          }
         },
-        ruff = {
-          enabled = true,
-          maxLineLength = 100
+      },
+      documents = {
+        org = {
+          org_todo_keywords = {
+            'TODO',
+            'IN_PROGRESS',
+            'DONE'
+          },
+        },
+        txt = {
+          parse = true,
+        },
+      },
+    }
+    require("lspconfig").pylsp.setup {
+      filetypes = { "python" },
+      on_attach = on_attach,
+      flags = lsp_flags,
+      settings = {
+        pylsp = {
+          plugins = {
+            pylint = {
+              enabled = false,
+            },
+            pyright = {
+              enabled = true,
+            },
+            textlsp = {
+              enabled = true,
+            },
+            isort = {
+              enabled = true,
+            },
+            pydocstyle = {
+              ignore = { "D200", "D213", "D203", "D212" },
+              enabled = true,
+            },
+            pycodestyle = {
+              maxLineLength = 100
+            },
+            flake8 = {
+              enabled = false,
+            },
+            black = {
+              enabled = true,
+              maxLineLength = 100
+            },
+            ruff = {
+              enabled = true,
+              maxLineLength = 100
+            }
+          }
         }
       }
     }
-  }
-}
--- Try to get black good a proper
---if vim.bo.filetype == "python" then
-vim.keymap.set('n', '<esc><esc>', ":Black<CR>:%s/\\s\\+$//e<CR>", { silent = true })
-vim.keymap.set('n', '<leader>mh', ":vertical resize -20 <CR>", { silent = true })
-vim.keymap.set('n', '<leader>ml', ":vertical resize +20 <CR>", { silent = true })
+    -- Try to get black good a proper
+    --if vim.bo.filetype == "python" then
+    vim.keymap.set('n', '<esc><esc>', ":Black<CR>:%s/\\s\\+$//e<CR>", { silent = true })
+    vim.keymap.set('n', '<leader>mh', ":vertical resize -20 <CR>", { silent = true })
+    vim.keymap.set('n', '<leader>ml', ":vertical resize +20 <CR>", { silent = true })
 
---vim.g.black_linelength = 80
+    --vim.g.black_linelength = 80
 
---vim.cmd(":execute \"set colorcolumn=\" . (&colorcolumn == \"\" ? \"81\" : \"\")")
-vim.cmd("set fo+=t")
-vim.cmd("set textwidth=87")
---end
+    --vim.cmd(":execute \"set colorcolumn=\" . (&colorcolumn == \"\" ? \"81\" : \"\")")
+    vim.cmd("set fo+=t")
+    vim.cmd("set textwidth=87")
+    --end
 
--- Key map for reload
-vim.keymap.set('n', '<leader>cc', ":tabnew ~/.config/nvim/init.lua  <CR>", { silent = true })
+    -- Key map for reload
+    vim.keymap.set('n', '<leader>cc', ":tabnew ~/.config/nvim/init.lua  <CR>", { silent = true })
 
-vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { silent = true })
+    vim.keymap.set('t', "<esc>", "<C-\\><C-n>", { silent = true })
 
-vim.opt.spell = true
-vim.opt.spelllang = 'en_us'
--- vim.opt.spelloptions("camel")
+    vim.opt.spell = true
+    vim.opt.spelllang = 'en_us'
+    -- vim.opt.spelloptions("camel")
 
--- vim.highlight.create('SpellBad', 'cterm=underline ctermfg=red')
--- hi SpellBad cterm=underline ctermfg=red
-require('copilot').setup({
-  panel = {
-    enabled = true,
-    auto_refresh = true,
-    keymap = {
-      jump_prev = "[[",
-      jump_next = "]]",
-      accept = "<CR>",
-      refresh = "gr",
-      open = "<M-CR>"
-    },
-    layout = {
-      position = "bottom", -- | top | left | right
-      ratio = 0.4
-    },
-  },
-  suggestion = {
-    enabled = true,
-    auto_trigger = false,
-    debounce = 75,
-    keymap = {
-      accept = "<M-l>",
-      accept_word = false,
-      accept_line = false,
-      next = "<M-]>",
-      prev = "<M-[>",
-      dismiss = "<C-]>",
-    },
-  },
-  filetypes = {
-    yaml = false,
-    markdown = false,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ["."] = false,
-  },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
-})
+    -- vim.highlight.create('SpellBad', 'cterm=underline ctermfg=red')
+    -- hi SpellBad cterm=underline ctermfg=red
+    require('copilot').setup({
+      panel = {
+        enabled = true,
+        auto_refresh = true,
+        keymap = {
+          jump_prev = "[[",
+          jump_next = "]]",
+          accept = "<CR>",
+          refresh = "gr",
+          open = "<M-CR>"
+        },
+        layout = {
+          position = "bottom", -- | top | left | right
+          ratio = 0.4
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        debounce = 75,
+        keymap = {
+          accept = "<M-l>",
+          accept_word = false,
+          accept_line = false,
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-]>",
+        },
+      },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+      },
+      copilot_node_command = 'node', -- Node.js version must be > 16.x
+      server_opts_overrides = {},
+    })
 
--- copy paste
-vim.keymap.set('n', 'C-c', "\"+y")
+    -- copy paste
+    vim.keymap.set('n', 'C-c', "\"+y")
 
--- Windows helper
-in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+    -- Windows helper
+    in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
 
-if in_wsl then
-  vim.g.clipboard = {
-    name = 'WslClipboard',
-    copy = {
-      ['+'] = { 'clip.exe' },
-      ['*'] = { 'clip.exe' },
-    },
-    paste = {
-      ['+'] = {
-        'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\'' },
-      ['*'] = {
-        'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\'' },
-    },
-    cache_enabled = 0,
-  }
-  --     vim.g.clipboard = {
-  --         name = 'wsl clipboard',
-  --         copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
-  --         paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
-  --         cache_enabled = true
-  --     }
-end
+    if in_wsl then
+      vim.g.clipboard = {
+        name = 'WslClipboard',
+        copy = {
+          ['+'] = { 'clip.exe' },
+          ['*'] = { 'clip.exe' },
+        },
+        paste = {
+          ['+'] = {
+            'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\'' },
+          ['*'] = {
+            'powershell.exe -c [Console]::\'Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))\'' },
+        },
+        cache_enabled = 0,
+      }
+      --     vim.g.clipboard = {
+      --         name = 'wsl clipboard',
+      --         copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+      --         paste = { ["+"] = { "~/.config/nvim/vim_paste" }, ["*"] = { "~/.config/nvim/vim_paste" } },
+      --         cache_enabled = true
+      --     }
+    end
   end,
 
 }
