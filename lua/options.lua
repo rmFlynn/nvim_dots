@@ -3,6 +3,11 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.g.python_host_prog = "C:/Users/rory_flynn/AppData/Local/Programs/Python/Python312/python.exe"
+vim.g.sqlite_clib_path = "C:/Users/rory_flynn/AppData/Local/nvim/nvim-win64/bin/sqlite3.dll"
+
+vim.cmd("filetype plugin on")
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.

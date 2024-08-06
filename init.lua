@@ -77,9 +77,6 @@ vim.g.maplocalleader = ';'
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
-vim.g.python_host_prog = "C:/Users/rory_flynn/AppData/Local/Programs/Python/Python312/python.exe"
-vim.g.sqlite_clib_path = "C:/Users/rory_flynn/AppData/Local/nvim/nvim-win64/bin/sqlite3.dll"
-vim.cmd("filetype plugin on")
 
 -- [[ Setting options ]]
 require 'options'
