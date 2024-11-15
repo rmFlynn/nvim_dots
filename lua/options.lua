@@ -3,10 +3,10 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
-vim.g.python_host_prog = "C:/Users/rory_flynn/AppData/Local/Programs/Python/Python312/python.exe"
-vim.g.sqlite_clib_path = "C:/Users/rory_flynn/AppData/Local/nvim/nvim-win64/bin/sqlite3.dll"
+-- vim.g.python_host_prog = "C:/Users/rory_flynn/AppData/Local/Programs/Python/Python312/python.exe"
+-- vim.g.sqlite_clib_path = "C:/Users/rory_flynn/AppData/Local/nvim/nvim-win64/bin/sqlite3.dll"
 
-vim.cmd("filetype plugin on")
+--vim.cmd("filetype plugin on")
 
 -- Make line numbers default
 vim.opt.number = true
@@ -67,15 +67,15 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- vim: ts=2 sts=2 sw=2 et
---
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+-- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--   callback = function()
+--     vim.highlight.on_yank()
+--   end,
+--   group = highlight_group,
+--   pattern = '*',
+-- })
+-- vim: ts=2 sts=2 sw=2 et
+--

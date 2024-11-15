@@ -24,7 +24,7 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
@@ -67,8 +67,9 @@ return {
           --
           -- In this case, we create a function that lets us more easily define mappings specific
           -- for LSP related items. It sets the mode, buffer and description for us each time.
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          local map = function(keys, func, desc, mode)
+            mode = mode or 'n'
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
           -- Jump to the definition of the word under your cursor.
@@ -156,6 +157,14 @@ return {
         end,
       })
 
+      -- Change diagnostic symbols in the sign column (gutter)
+      -- if vim.g.have_nerd_font then
+      --   local signs = { Error = '', Warn = '', Hint = '', Info = '' }
+      --   for type, icon in pairs(signs) do
+      --     local hl = 'DiagnosticSign' .. type
+      --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      --   end
+      -- end
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -188,7 +197,7 @@ return {
         pylsp = {},
         rust_analyzer = {},
         tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        tml = { filetypes = { 'html', 'twig', 'hbs' } },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -239,7 +248,7 @@ return {
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
---   
+--
 --   -- document existing key chains
 --   require('which-key').register {
 --     ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },

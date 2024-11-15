@@ -4,7 +4,7 @@
 
 # you can get the version here
 #
-VERSION=v0.9.4
+VERSION=v0.10.0
 
 mkdir appimage
 cd appimage
