@@ -21,12 +21,17 @@ return {
             -- returns a table (see below)
             command = { "bash" }
           },
-	  ipython = require("iron.fts.python").ipython,
-          --python = {
-          --   command = {"ipython"},
-          --   format = require("iron.fts.common").bracketed_paste,
-          --   ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
-          --},
+          ps = {
+            -- Can be a table or a function that
+            -- returns a table (see below)
+            command = { "powershell" }
+          },
+	  -- ipython = require("iron.fts.python").ipython,
+          python = {
+             command = {"ipython", "--simple-prompt"},
+             -- format = require("iron.fts.python").ipython,
+             ignore_blank_lines = false, -- ignore blank lines when sending visual select lines
+          },
         },
         repl_open_cmd = view.split.vertical.botright()
         -- How the repl window will be displayed
@@ -60,7 +65,8 @@ return {
     vim.keymap.set('n', '<space>', '<Cmd>lua require("iron").core.send_line()<cr><cr>')
     vim.keymap.set('n', '<leader>rt', '<cmd>IronRepl<cr>')
     vim.keymap.set('n', '<leader>rb', '<cmd>IronRepl sh<cr><cmd>IronAttach sh<cr>')
-    vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl ipython<cr><cmd>IronAttach ipython<cr>')
+    vim.keymap.set('n', '<leader>rs', '<cmd>IronRepl ps<cr><cmd>IronAttach ps<cr>')
+    vim.keymap.set('n', '<leader>rp', '<cmd>IronRepl python<cr><cmd>IronAttach ipython<cr>')
     vim.keymap.set('n', '<leader><space>rr', '<cmd>IronRestart<cr>')
     vim.keymap.set('n', '<leader><space>rf', '<cmd>IronFocus<cr>')
     vim.keymap.set('n', '<leader><space>rh', '<cmd>IronHide<cr>')

@@ -11,3 +11,4 @@ source ~/.bash_profile
 nvm  ls-remote
 nvm install --lts
 
+
